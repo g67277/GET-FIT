@@ -27,6 +27,17 @@
 		81CBCD621996D433005DC03C /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCD611996D433005DC03C /* CalendarViewController.m */; };
 		81CBCD651996D612005DC03C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCD641996D612005DC03C /* RootViewController.m */; };
 		81CBCD681996D64F005DC03C /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCD671996D64F005DC03C /* LeftMenuViewController.m */; };
+		81CBCEC719980082005DC03C /* TargetedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEC619980082005DC03C /* TargetedListViewController.m */; };
+		81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEC9199800BF005DC03C /* TargetedCell.m */; };
+		81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCECC19980711005DC03C /* WorkoutFeed.m */; };
+		81CBCED0199807A8005DC03C /* WorkoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCECF199807A8005DC03C /* WorkoutInfo.m */; };
+		81CBCED519980F7D005DC03C /* bodyweight leg raise 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */; };
+		81CBCED619980F7D005DC03C /* bodyweight leg raise 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */; };
+		81CBCED719980F7D005DC03C /* two 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED319980F7D005DC03C /* two 1.jpg */; };
+		81CBCED819980F7D005DC03C /* two 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED419980F7D005DC03C /* two 2.jpg */; };
+		81CBCEDC1998167C005DC03C /* TargetedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */; };
+		81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCEDD1998385E005DC03C /* good times rg.ttf */; };
+		81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEE119983AF6005DC03C /* WorkoutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +82,23 @@
 		81CBCD641996D612005DC03C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		81CBCD661996D64F005DC03C /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		81CBCD671996D64F005DC03C /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		81CBCEC519980082005DC03C /* TargetedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetedListViewController.h; sourceTree = "<group>"; };
+		81CBCEC619980082005DC03C /* TargetedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetedListViewController.m; sourceTree = "<group>"; };
+		81CBCEC8199800BF005DC03C /* TargetedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetedCell.h; sourceTree = "<group>"; };
+		81CBCEC9199800BF005DC03C /* TargetedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetedCell.m; sourceTree = "<group>"; };
+		81CBCECB19980711005DC03C /* WorkoutFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutFeed.h; sourceTree = "<group>"; };
+		81CBCECC19980711005DC03C /* WorkoutFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutFeed.m; sourceTree = "<group>"; };
+		81CBCECE199807A8005DC03C /* WorkoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutInfo.h; sourceTree = "<group>"; };
+		81CBCECF199807A8005DC03C /* WorkoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutInfo.m; sourceTree = "<group>"; };
+		81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bodyweight leg raise 1.jpg"; sourceTree = "<group>"; };
+		81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bodyweight leg raise 2.jpg"; sourceTree = "<group>"; };
+		81CBCED319980F7D005DC03C /* two 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "two 1.jpg"; sourceTree = "<group>"; };
+		81CBCED419980F7D005DC03C /* two 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "two 2.jpg"; sourceTree = "<group>"; };
+		81CBCEDA1998167C005DC03C /* TargetedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetedDetailsViewController.h; sourceTree = "<group>"; };
+		81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetedDetailsViewController.m; sourceTree = "<group>"; };
+		81CBCEDD1998385E005DC03C /* good times rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good times rg.ttf"; sourceTree = "<group>"; };
+		81CBCEE019983AF6005DC03C /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
+		81CBCEE119983AF6005DC03C /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +158,8 @@
 		81CBCD271996D1F0005DC03C /* GET FIT */ = {
 			isa = PBXGroup;
 			children = (
+				81CBCEDD1998385E005DC03C /* good times rg.ttf */,
+				81CBCED919980F86005DC03C /* workout Images */,
 				81CBCD561996D263005DC03C /* RESideMenu */,
 				81CBCD301996D1F0005DC03C /* AppDelegate.h */,
 				81CBCD311996D1F0005DC03C /* AppDelegate.m */,
@@ -140,10 +170,10 @@
 				81CBCD281996D1F0005DC03C /* Supporting Files */,
 				81CBCD601996D433005DC03C /* CalendarViewController.h */,
 				81CBCD611996D433005DC03C /* CalendarViewController.m */,
-				81CBCD631996D612005DC03C /* RootViewController.h */,
-				81CBCD641996D612005DC03C /* RootViewController.m */,
-				81CBCD661996D64F005DC03C /* LeftMenuViewController.h */,
-				81CBCD671996D64F005DC03C /* LeftMenuViewController.m */,
+				81CBCEC41997F06D005DC03C /* Menu items */,
+				81CBCEDF19983AC8005DC03C /* Targeted Workout */,
+				81CBCEE019983AF6005DC03C /* WorkoutViewController.h */,
+				81CBCEE119983AF6005DC03C /* WorkoutViewController.m */,
 			);
 			path = "GET FIT";
 			sourceTree = "<group>";
@@ -188,6 +218,45 @@
 				81CBCD5C1996D263005DC03C /* UIViewController+RESideMenu.m */,
 			);
 			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		81CBCEC41997F06D005DC03C /* Menu items */ = {
+			isa = PBXGroup;
+			children = (
+				81CBCD631996D612005DC03C /* RootViewController.h */,
+				81CBCD641996D612005DC03C /* RootViewController.m */,
+				81CBCD661996D64F005DC03C /* LeftMenuViewController.h */,
+				81CBCD671996D64F005DC03C /* LeftMenuViewController.m */,
+			);
+			name = "Menu items";
+			sourceTree = "<group>";
+		};
+		81CBCED919980F86005DC03C /* workout Images */ = {
+			isa = PBXGroup;
+			children = (
+				81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */,
+				81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */,
+				81CBCED319980F7D005DC03C /* two 1.jpg */,
+				81CBCED419980F7D005DC03C /* two 2.jpg */,
+			);
+			name = "workout Images";
+			sourceTree = "<group>";
+		};
+		81CBCEDF19983AC8005DC03C /* Targeted Workout */ = {
+			isa = PBXGroup;
+			children = (
+				81CBCEC519980082005DC03C /* TargetedListViewController.h */,
+				81CBCEC619980082005DC03C /* TargetedListViewController.m */,
+				81CBCEC8199800BF005DC03C /* TargetedCell.h */,
+				81CBCEC9199800BF005DC03C /* TargetedCell.m */,
+				81CBCECB19980711005DC03C /* WorkoutFeed.h */,
+				81CBCECC19980711005DC03C /* WorkoutFeed.m */,
+				81CBCECE199807A8005DC03C /* WorkoutInfo.h */,
+				81CBCECF199807A8005DC03C /* WorkoutInfo.m */,
+				81CBCEDA1998167C005DC03C /* TargetedDetailsViewController.h */,
+				81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */,
+			);
+			name = "Targeted Workout";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +335,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CBCED519980F7D005DC03C /* bodyweight leg raise 1.jpg in Resources */,
+				81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */,
 				81CBCD3A1996D1F0005DC03C /* Images.xcassets in Resources */,
 				81CBCD2C1996D1F0005DC03C /* InfoPlist.strings in Resources */,
+				81CBCED619980F7D005DC03C /* bodyweight leg raise 2.jpg in Resources */,
 				81CBCD351996D1F0005DC03C /* Main.storyboard in Resources */,
+				81CBCED819980F7D005DC03C /* two 2.jpg in Resources */,
+				81CBCED719980F7D005DC03C /* two 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,13 +363,19 @@
 			files = (
 				81CBCD381996D1F0005DC03C /* ViewController.m in Sources */,
 				81CBCD321996D1F0005DC03C /* AppDelegate.m in Sources */,
+				81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */,
+				81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */,
 				81CBCD651996D612005DC03C /* RootViewController.m in Sources */,
 				81CBCD2E1996D1F0005DC03C /* main.m in Sources */,
+				81CBCEC719980082005DC03C /* TargetedListViewController.m in Sources */,
+				81CBCED0199807A8005DC03C /* WorkoutInfo.m in Sources */,
 				81CBCD681996D64F005DC03C /* LeftMenuViewController.m in Sources */,
 				81CBCD5E1996D263005DC03C /* RESideMenu.m in Sources */,
+				81CBCEDC1998167C005DC03C /* TargetedDetailsViewController.m in Sources */,
 				81CBCD5D1996D263005DC03C /* RECommonFunctions.m in Sources */,
 				81CBCD5F1996D263005DC03C /* UIViewController+RESideMenu.m in Sources */,
 				81CBCD621996D433005DC03C /* CalendarViewController.m in Sources */,
+				81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +580,7 @@
 				81CBCD521996D1F1005DC03C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81CBCD531996D1F1005DC03C /* Build configuration list for PBXNativeTarget "GET FITTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +589,7 @@
 				81CBCD551996D1F1005DC03C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

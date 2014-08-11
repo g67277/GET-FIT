@@ -8,7 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
+#import "WorkoutFeed.h"
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController{
+    
+    //Abs Diagram Buttons___________________________
+    IBOutlet UIButton *upperBtn;
+    IBOutlet UIButton *lowerBtn;
+    IBOutlet UIButton *midBtn;
+    IBOutletCollection(UIButton) NSArray *sidesBtn;
+    //______________________________________________
+    
+    //Arrays to hold all workouts and filter by tag_
+    NSArray* allWorkouts;
+    NSMutableArray* targetedWorkoutArray;
+    //______________________________________________
+    
+    WorkoutFeed* workoutFeed;
+}
+
+
 
 @end
