@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "WorkoutFeed.h"
+static const int DEFAULT_WORKOUT_TIME = 30;
+static const int DEFAULT_RESTING = 10;
 
 @interface WorkoutViewController : UIViewController{
     
+    IBOutlet UILabel *workTitle;
     IBOutlet UILabel *countDownLabel;
     IBOutlet UIImageView *animationImageView;
+    
+    IBOutlet UIButton* pause;
     
     BOOL resting;
     BOOL pauseWork;
@@ -25,6 +30,7 @@
     int numOfWorkoutSeconds;
     
     NSArray* allWorkouts;
+    NSMutableArray* workoutImages;
     
     WorkoutFeed* workoutFeed;
 

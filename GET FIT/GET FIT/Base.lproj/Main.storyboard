@@ -163,25 +163,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timerback" translatesAutoresizingMaskIntoConstraints="NO" id="21c-W3-Yh6">
+                                <rect key="frame" x="98" y="35" width="127" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p92-tY-BaF">
-                                <rect key="frame" x="119" y="83" width="82" height="56"/>
+                                <rect key="frame" x="120" y="71" width="82" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLy-Gr-ZsS">
-                                <rect key="frame" x="0.0" y="165" width="320" height="162"/>
+                            <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5K-hu-WBw">
+                                <rect key="frame" x="98" y="35" width="127" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5K-hu-WBw">
-                                <rect key="frame" x="137" y="384" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="pause">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onClick:" destination="L1Z-ts-MKY" eventType="touchUpInside" id="aF5-42-3Dn"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLy-Gr-ZsS">
+                                <rect key="frame" x="0.0" y="165" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="3yu-TX-MSZ">
+                                <rect key="frame" x="11" y="335" width="300" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="highlightedColor" red="0.19215688109397888" green="0.20784315466880798" blue="0.24705883860588074" alpha="1" colorSpace="deviceRGB"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ur-f5-ayv">
+                                <rect key="frame" x="44" y="84" width="15" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClick:" destination="L1Z-ts-MKY" eventType="touchUpInside" id="YMb-L4-H8I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvO-h2-1Pc">
+                                <rect key="frame" x="255" y="84" width="15" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClick:" destination="L1Z-ts-MKY" eventType="touchUpInside" id="Rom-r6-oNy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,6 +223,8 @@
                     <connections>
                         <outlet property="animationImageView" destination="gLy-Gr-ZsS" id="KoF-ih-Fkg"/>
                         <outlet property="countDownLabel" destination="p92-tY-BaF" id="nk7-64-EBR"/>
+                        <outlet property="pause" destination="L5K-hu-WBw" id="m4P-l3-T3q"/>
+                        <outlet property="workTitle" destination="3yu-TX-MSZ" id="Dgh-Yp-pmu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNR-iI-5wD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,11 +413,15 @@
     </scenes>
     <resources>
         <image name="Abs" width="283" height="370"/>
+        <image name="back" width="15" height="26"/>
         <image name="focus main" width="277" height="13"/>
         <image name="menu" width="34" height="21"/>
         <image name="or" width="74" height="29"/>
+        <image name="pause" width="128" height="127"/>
+        <image name="skip" width="15" height="26"/>
         <image name="start main" width="281" height="70"/>
         <image name="startreflection" width="279" height="26"/>
+        <image name="timerback" width="128" height="127"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
