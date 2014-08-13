@@ -14,6 +14,7 @@
 @end
 
 @implementation WorkoutViewController
+@synthesize targetedArrayWorkout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,20 +30,30 @@
     [super viewDidLoad];
     //record num of workout minutes
     numOfWorkoutSeconds = 0;
+    workoutFeed = [[WorkoutFeed alloc] init];
+    
+    workoutImages = [[NSMutableArray alloc]init];
+    
+    if (targetedArrayWorkout == nil) {
+        allWorkouts = [workoutFeed workoutArray];
+        [self createImageArray:allWorkouts];
+    }else if (allWorkouts == nil){
+        [self createImageArray:targetedArrayWorkout];
+    }
+    
     // set number
     setNum = 1;
+    indicatorCount = 1;
+    // count is time counter is starting +1
+    count = DEFAULT_WORKOUT_TIME;
+    
+    // Sounds
+    NSString* audioPath = [[NSBundle mainBundle] pathForResource:@"beep-24" ofType:@"mp3"];
+    beepSound = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:audioPath] error:NULL];
     
     pause.layer.cornerRadius = pause.frame.size.width / 2;
     pause.clipsToBounds = YES;
     
-    [super viewDidLoad];
-    
-    workoutFeed = [[WorkoutFeed alloc] init];
-    allWorkouts = [workoutFeed workoutArray];
-    workoutImages = [[NSMutableArray alloc]init];
-    for (int i = 0; i < [allWorkouts count]; i++) {
-        [workoutImages addObject:[allWorkouts[i] valueForKey:@"imageArray"]];
-    }
     [self setTimer];
     
     //------------------------------------Pulling Date (for core data tracking)-----------------------------------
@@ -51,8 +62,33 @@
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     NSInteger hour = [components hour];
     NSInteger minute = [components minute];
-    NSLog(@"%d, %d", hour, minute);
+    NSLog(@"%ld, %ld", (long)hour, (long)minute);
     //------------------------------------------------------------------------------------------------------------
+}
+
+- (void) createImageArray: (NSArray*) workout{
+    for (int i = 0; i < [workout count]; i++) {
+        [workoutImages addObject:[workout[i] valueForKey:@"imageArray"]];
+    }
+}
+
+- (void) indicatorOnOff{
+    NSArray* indicatorArray = @[indicator1, indicator2, indicator3, indicator4, indicator5, indicator6, indicator7, indicator8, indicator9, indicator10];
+    
+    for (int i = 0; i < [indicatorArray count]; i++) {
+        if (indicatorCount < setNum) {
+            int onOff = indicatorCount - 1;
+            UIImageView* indImage = indicatorArray[onOff];
+            indImage.image = [UIImage imageNamed:@"complete"];
+            indicatorCount++;
+        }else if (indicatorCount > setNum){
+            int onOff = indicatorCount - 2;
+            UIImageView* indImage = indicatorArray[onOff];
+            indImage.image = [UIImage imageNamed:@"notcomplete"];
+            indicatorCount--;
+        }
+    }
+    
 }
 
 
@@ -63,21 +99,27 @@
     for (int i = 0; i < 2; i++) {
         //[images addObject:[UIImage imageNamed:[[self arraySelector] objectAtIndex:i]]];
         [images addObject:[UIImage imageNamed:[workoutImages[setNum -1] objectAtIndex:i]]];
+        animationImageView.image = [UIImage imageNamed:[workoutImages[setNum -1] objectAtIndex:i]];
     }
-    workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
+    
+    // updating workout title based on the incoming array
+    if (targetedArrayWorkout == nil) {
+        workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
+    }else if (allWorkouts == nil){
+        workTitle.text = [targetedArrayWorkout[setNum -1] valueForKey:@"title"];
+    }
+    //updating set label
+    setLabel.text = [NSString stringWithFormat:@"SET: %d", setNum];
 
     // Normal Animation
     animationImageView.animationImages = images;
     animationImageView.animationDuration = 1;
-    
     [self.view addSubview:animationImageView];
 }
 
 
 // Set time here
 - (void) setTimer{
-    // count is time counter is starting +1
-    count = DEFAULT_WORKOUT_TIME;
     // resting boolean
     resting = false;
     // pause play boolean
@@ -98,20 +140,38 @@
 // Minipulate time here
 -(void) updateTime{
     
-    if (setNum > 10) {
+    dynamicWorkCount = 10;
+    if (targetedArrayWorkout != nil) {
+        if ([targetedArrayWorkout count] < 10) {
+            dynamicWorkCount = [targetedArrayWorkout count];
+        }
+    }
+    
+    
+    if (setNum > dynamicWorkCount) {
+        NSLog(@"%d", setNum);
+        NSLog(@"%d", dynamicWorkCount);
         [timer invalidate];
         [animationImageView stopAnimating];
     }else{
         // subtracting 1 from count to countdown
         count = count - 1;
         // updating label text
-        countDownLabel.text = [NSString stringWithFormat:@"%d", count];
+        countDownLabel.text = [NSString stringWithFormat:@"%d", count + 1];
+        
+        //sound
+        if (count < 3) {
+            [beepSound play];
+        }
+        
         // if count reaches 1 reset and change the resting boolean
-        if (count == 1 && resting == false) {
+        if (count == 0 && resting == false) {
             count = DEFAULT_RESTING;
             resting = true;
             setNum++;
-        }else if(count == 1 && resting == true){
+            // indicator images function
+            [self indicatorOnOff];
+        }else if(count == 0 && resting == true){
             count = DEFAULT_WORKOUT_TIME;
             resting = false;
         }else if(resting == true){
@@ -161,6 +221,8 @@
             // error message, can't move back
         }else{
             setNum--;
+            // indicator images function
+            [self indicatorOnOff];
             workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
             count = DEFAULT_WORKOUT_TIME;
             [timer invalidate];
@@ -173,10 +235,13 @@
             }
         }
     }else if (sender.tag == 2){
-        if (setNum == 10) {
+        NSLog(@"%d", dynamicWorkCount);
+        if (setNum >= dynamicWorkCount) {
             // error message, can't move forward
         }else{
             setNum++;
+            // indicator images function
+            [self indicatorOnOff];
             workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
             count = DEFAULT_WORKOUT_TIME;
             [timer invalidate];

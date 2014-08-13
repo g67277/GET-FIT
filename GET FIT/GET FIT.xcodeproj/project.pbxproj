@@ -38,6 +38,8 @@
 		81CBCEDC1998167C005DC03C /* TargetedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */; };
 		81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCEDD1998385E005DC03C /* good times rg.ttf */; };
 		81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEE119983AF6005DC03C /* WorkoutViewController.m */; };
+		81CBCEE4199AFBCB005DC03C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */; };
+		81CBCEE8199AFF05005DC03C /* beep-24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCEE7199AFF05005DC03C /* beep-24.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		81CBCEDD1998385E005DC03C /* good times rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good times rg.ttf"; sourceTree = "<group>"; };
 		81CBCEE019983AF6005DC03C /* WorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutViewController.h; sourceTree = "<group>"; };
 		81CBCEE119983AF6005DC03C /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
+		81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		81CBCEE7199AFF05005DC03C /* beep-24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-24.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CBCEE4199AFBCB005DC03C /* AVFoundation.framework in Frameworks */,
 				81CBCD241996D1F0005DC03C /* CoreGraphics.framework in Frameworks */,
 				81CBCD261996D1F0005DC03C /* UIKit.framework in Frameworks */,
 				81CBCD221996D1F0005DC03C /* Foundation.framework in Frameworks */,
@@ -147,6 +152,7 @@
 		81CBCD201996D1F0005DC03C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */,
 				81CBCD211996D1F0005DC03C /* Foundation.framework */,
 				81CBCD231996D1F0005DC03C /* CoreGraphics.framework */,
 				81CBCD251996D1F0005DC03C /* UIKit.framework */,
@@ -159,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				81CBCEDD1998385E005DC03C /* good times rg.ttf */,
+				81CBCEE7199AFF05005DC03C /* beep-24.mp3 */,
 				81CBCED919980F86005DC03C /* workout Images */,
 				81CBCD561996D263005DC03C /* RESideMenu */,
 				81CBCD301996D1F0005DC03C /* AppDelegate.h */,
@@ -172,8 +179,7 @@
 				81CBCD611996D433005DC03C /* CalendarViewController.m */,
 				81CBCEC41997F06D005DC03C /* Menu items */,
 				81CBCEDF19983AC8005DC03C /* Targeted Workout */,
-				81CBCEE019983AF6005DC03C /* WorkoutViewController.h */,
-				81CBCEE119983AF6005DC03C /* WorkoutViewController.m */,
+				81CBCEE9199AFF88005DC03C /* Main Workout */,
 			);
 			path = "GET FIT";
 			sourceTree = "<group>";
@@ -259,6 +265,15 @@
 			name = "Targeted Workout";
 			sourceTree = "<group>";
 		};
+		81CBCEE9199AFF88005DC03C /* Main Workout */ = {
+			isa = PBXGroup;
+			children = (
+				81CBCEE019983AF6005DC03C /* WorkoutViewController.h */,
+				81CBCEE119983AF6005DC03C /* WorkoutViewController.m */,
+			);
+			name = "Main Workout";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CBCEE8199AFF05005DC03C /* beep-24.mp3 in Resources */,
 				81CBCED519980F7D005DC03C /* bodyweight leg raise 1.jpg in Resources */,
 				81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */,
 				81CBCD3A1996D1F0005DC03C /* Images.xcassets in Resources */,

@@ -10,6 +10,7 @@
 #import "WorkoutFeed.h"
 #import "TargetedCell.h"
 #import "TargetedDetailsViewController.h"
+#import "WorkoutViewController.h"
 
 @interface TargetedListViewController ()
 
@@ -73,17 +74,25 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    TargetedDetailsViewController* detailView = segue.destinationViewController;
-    if (detailView != nil) {
-        UITableViewCell *cell = (UITableViewCell*)sender;
-        NSIndexPath *indexPath = [targetedTableView indexPathForCell:cell];
+    if ([segue.identifier  isEqual: @"toDetail"]) {
+        TargetedDetailsViewController* detailView = segue.destinationViewController;
+        if (detailView != nil) {
+            UITableViewCell *cell = (UITableViewCell*)sender;
+            NSIndexPath *indexPath = [targetedTableView indexPathForCell:cell];
+            
+            // get the string from the array based on the cell in the tabel view we clicked
+            
+            WorkoutInfo *selectedString = [targetedArray objectAtIndex:indexPath.row];
+            
+            detailView.currentCell = selectedString;
+        }
+    }else if ([segue.identifier  isEqual: @"toTargetedWork"]) {
         
-        // get the string from the array based on the cell in the tabel view we clicked
-        
-        WorkoutInfo *selectedString = [targetedArray objectAtIndex:indexPath.row];
-        
-        detailView.currentCell = selectedString;
+        WorkoutViewController* workVC = segue.destinationViewController;
+        workVC.targetedArrayWorkout = targetedArray;
     }
+
+
 }
 //-----------------------------------------------------------------------------------------------------------------
 

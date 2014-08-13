@@ -7,17 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "WorkoutFeed.h"
-static const int DEFAULT_WORKOUT_TIME = 30;
-static const int DEFAULT_RESTING = 10;
+static const int DEFAULT_WORKOUT_TIME = 5;
+static const int DEFAULT_RESTING = 3;
 
-@interface WorkoutViewController : UIViewController{
+@interface WorkoutViewController : UIViewController <AVAudioPlayerDelegate>{
     
     IBOutlet UILabel *workTitle;
     IBOutlet UILabel *countDownLabel;
+    IBOutlet UILabel *setLabel;
     IBOutlet UIImageView *animationImageView;
     
+    // indicator images -- need to find a better way...
+    IBOutlet UIImageView *indicator1;
+    IBOutlet UIImageView *indicator2;
+    IBOutlet UIImageView *indicator3;
+    IBOutlet UIImageView *indicator4;
+    IBOutlet UIImageView *indicator5;
+    IBOutlet UIImageView *indicator6;
+    IBOutlet UIImageView *indicator7;
+    IBOutlet UIImageView *indicator8;
+    IBOutlet UIImageView *indicator9;
+    IBOutlet UIImageView *indicator10;
+    //--------------------------------------------------
     IBOutlet UIButton* pause;
+    
+    //
+    AVAudioPlayer* beepSound;
     
     BOOL resting;
     BOOL pauseWork;
@@ -25,9 +42,11 @@ static const int DEFAULT_RESTING = 10;
     NSTimer* timer;
     
     int count;
+    int indicatorCount;
     int workoutNum;
     int setNum;
     int numOfWorkoutSeconds;
+    int dynamicWorkCount;
     
     NSArray* allWorkouts;
     NSMutableArray* workoutImages;
@@ -35,6 +54,8 @@ static const int DEFAULT_RESTING = 10;
     WorkoutFeed* workoutFeed;
 
 }
+@property (nonatomic, assign) NSArray* targetedArrayWorkout;
+
 
 - (IBAction)onClick:(UIButton*)sender;
 

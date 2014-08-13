@@ -26,7 +26,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self imageAnimation];
+}
+
+- (void) imageAnimation{
+    // Load images
+    
+    NSArray* test = self.currentCell.imageArray;
+    
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 2; i++) {
+        [images addObject:[UIImage imageNamed:[test objectAtIndex:i]]];
+    }
+    
+    // Normal Animation
+    dImages.animationImages = images;
+    dImages.animationDuration = 1;
+    
+    [self.view addSubview:dImages];
+    [dImages startAnimating];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
