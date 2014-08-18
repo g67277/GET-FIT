@@ -15,6 +15,10 @@
 
 @implementation RootViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 - (void)awakeFromNib
 {
     self.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
@@ -28,7 +32,7 @@
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
     //self.rightMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"rightMenuViewController"];
     //self.backgroundImage = [UIImage imageNamed:@"MenuBackground"];
-    self.view.backgroundColor = [UIColor redColor]; // set color instead of picture
+    self.view.backgroundColor = [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1]; // set color instead of picture
     self.delegate = self;
 }
 

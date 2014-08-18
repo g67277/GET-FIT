@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
 
-@interface CalendarViewController : UIViewController
+@interface CalendarViewController : UIViewController{
+    
+    IBOutlet UIButton* panelButton;
+    
+}
 
 @end

@@ -32,9 +32,43 @@
 {
     [super viewDidLoad];
     
+    [self navColor];
+    
     workoutFeed = [[WorkoutFeed alloc] init];
     currentCell = [[WorkoutInfo alloc] init];
     
+    
+    
+}
+
+- (void) navColor{
+    NSString* colorTag = [targetedArray[0] valueForKey:@"workoutTag"];
+
+    if ([colorTag isEqualToString:@"upper"]) {
+        self.navigationItem.title = @"Upper";
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        
+    }else if([colorTag isEqualToString:@"mid"]){
+        self.navigationItem.title = @"Mid";
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        
+    }else if([colorTag isEqualToString:@"lower"]){
+        self.navigationItem.title = @"Lower";
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        
+    }else if([colorTag isEqualToString:@"sides"]){
+        self.navigationItem.title = @"Sides";
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        
+    }
 }
 
 #pragma TableView Functions

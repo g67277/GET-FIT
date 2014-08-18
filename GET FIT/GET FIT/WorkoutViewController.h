@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "WorkoutFeed.h"
-static const int DEFAULT_WORKOUT_TIME = 5;
-static const int DEFAULT_RESTING = 3;
+#import "settings.h"
+#import "SettingsViewController.h"
+static const int DEFAULT_WORKOUT_TIME = 4;
+//static const int DEFAULT_RESTING = 10;
 
 @interface WorkoutViewController : UIViewController <AVAudioPlayerDelegate>{
     
@@ -47,11 +49,15 @@ static const int DEFAULT_RESTING = 3;
     int setNum;
     int numOfWorkoutSeconds;
     int dynamicWorkCount;
+    int selectedRestCount;
     
-    NSArray* allWorkouts;
+    NSArray* incomingWorkoutList;
     NSMutableArray* workoutImages;
     
     WorkoutFeed* workoutFeed;
+    
+    settings* settingObject;
+    SettingsViewController* settingsVC;
 
 }
 @property (nonatomic, assign) NSArray* targetedArrayWorkout;

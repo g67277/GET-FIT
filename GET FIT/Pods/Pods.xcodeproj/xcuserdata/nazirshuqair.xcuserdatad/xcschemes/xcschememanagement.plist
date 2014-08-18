@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-GET FIT-BButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-Cedar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-FrameAccessor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-GraphKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-MKFoundationKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-OCBorghettiView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-Swizzlean.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>10A2BD41C4E44D36A998A93D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30568B596C3A49CAA7846039</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54708C2923E64C9697D1ADA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63E2D2970F0E49E1A4AA9279</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>655EE3E4EDA348129A9C6782</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FFCD7B34C684931B1F5B44A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0D162339C0F49FCA08E75BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE8A7D0EE3314433896466BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

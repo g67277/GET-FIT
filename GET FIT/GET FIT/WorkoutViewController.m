@@ -7,6 +7,8 @@
 //
 
 #import "WorkoutViewController.h"
+#import "SettingsViewController.h"
+#import "settings.h"
 
 
 @interface WorkoutViewController ()
@@ -34,12 +36,22 @@
     
     workoutImages = [[NSMutableArray alloc]init];
     
-    if (targetedArrayWorkout == nil) {
-        allWorkouts = [workoutFeed workoutArray];
-        [self createImageArray:allWorkouts];
-    }else if (allWorkouts == nil){
-        [self createImageArray:targetedArrayWorkout];
+    
+    settingsVC = [[SettingsViewController alloc] init];
+    settingObject = [[settings alloc] init];
+    selectedRestCount = settingObject.restCount;
+    NSLog(@"%d", settingObject.restCount);
+    //resting count from settings
+    if (selectedRestCount == 0) {
+        selectedRestCount = 10;
     }
+    
+    if (targetedArrayWorkout == nil) {
+        incomingWorkoutList = [workoutFeed workoutArray];
+    }else if (incomingWorkoutList == nil){
+        incomingWorkoutList = targetedArrayWorkout;
+    }
+    [self createImageArray:incomingWorkoutList];
     
     // set number
     setNum = 1;
@@ -78,8 +90,11 @@
     for (int i = 0; i < [indicatorArray count]; i++) {
         if (indicatorCount < setNum) {
             int onOff = indicatorCount - 1;
-            UIImageView* indImage = indicatorArray[onOff];
-            indImage.image = [UIImage imageNamed:@"complete"];
+            if (count < 4) {
+                UIImageView* indImage = indicatorArray[onOff];
+                indImage.image = [UIImage imageNamed:@"complete"];
+            }
+            
             indicatorCount++;
         }else if (indicatorCount > setNum){
             int onOff = indicatorCount - 2;
@@ -103,17 +118,13 @@
     }
     
     // updating workout title based on the incoming array
-    if (targetedArrayWorkout == nil) {
-        workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
-    }else if (allWorkouts == nil){
-        workTitle.text = [targetedArrayWorkout[setNum -1] valueForKey:@"title"];
-    }
+        workTitle.text = [incomingWorkoutList[setNum -1] valueForKey:@"title"];
     //updating set label
     setLabel.text = [NSString stringWithFormat:@"SET: %d", setNum];
 
     // Normal Animation
     animationImageView.animationImages = images;
-    animationImageView.animationDuration = 1;
+    animationImageView.animationDuration = 1.25;
     [self.view addSubview:animationImageView];
 }
 
@@ -166,7 +177,14 @@
         
         // if count reaches 1 reset and change the resting boolean
         if (count == 0 && resting == false) {
-            count = DEFAULT_RESTING;
+            count = selectedRestCount;
+            NSLog(@"%d", selectedRestCount);
+            // if in resting, stop animating
+            [animationImageView stopAnimating];
+            if (setNum != dynamicWorkCount) {
+                animationImageView.image = [UIImage imageNamed: @"stopwatch.png"];
+                workTitle.text = @"Rest Time...";
+            }
             resting = true;
             setNum++;
             // indicator images function
@@ -203,16 +221,19 @@
     }else if(sender.tag == 0 && pauseWork == true){
         // create a new nstimer to resume
         //changing the button image for play/pause
-        [UIView animateWithDuration:0.5 animations:^{
-            pause.alpha = 0.1;
-            [pause setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
-        }];
-        [self setTimer];
-        pauseWork = false;
-        // do not animate if still in resting session
-        if (resting == false) {
-            [animationImageView startAnimating];
+        if (setNum <= 10) {
+            [UIView animateWithDuration:0.5 animations:^{
+                pause.alpha = 0.1;
+                [pause setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+            }];
+            [self setTimer];
+            pauseWork = false;
+            // do not animate if still in resting session
+            if (resting == false) {
+                [animationImageView startAnimating];
+            }
         }
+        
     }
     
     //Back/Skip controls-----------------------------------------
@@ -223,7 +244,7 @@
             setNum--;
             // indicator images function
             [self indicatorOnOff];
-            workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
+            workTitle.text = [incomingWorkoutList[setNum -1] valueForKey:@"title"];
             count = DEFAULT_WORKOUT_TIME;
             [timer invalidate];
             pauseWork = true;
@@ -242,7 +263,7 @@
             setNum++;
             // indicator images function
             [self indicatorOnOff];
-            workTitle.text = [allWorkouts[setNum -1] valueForKey:@"title"];
+            workTitle.text = [incomingWorkoutList[setNum -1] valueForKey:@"title"];
             count = DEFAULT_WORKOUT_TIME;
             [timer invalidate];
             pauseWork = true;

@@ -7,6 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F698199C5F8B003D75A0 /* abVup1.png */; };
+		81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F699199C5F8B003D75A0 /* abVup2.png */; };
+		81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */; };
+		81A0F6AF199C5F8B003D75A0 /* armAndLegLift2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */; };
+		81A0F6B0199C5F8B003D75A0 /* bicycle1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69C199C5F8B003D75A0 /* bicycle1.png */; };
+		81A0F6B1199C5F8B003D75A0 /* bicycle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69D199C5F8B003D75A0 /* bicycle2.png */; };
+		81A0F6B2199C5F8B003D75A0 /* crunch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69E199C5F8B003D75A0 /* crunch1.png */; };
+		81A0F6B3199C5F8B003D75A0 /* crunch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69F199C5F8B003D75A0 /* crunch2.png */; };
+		81A0F6B4199C5F8B003D75A0 /* heelTouch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */; };
+		81A0F6B5199C5F8B003D75A0 /* heelTouch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */; };
+		81A0F6B6199C5F8B003D75A0 /* hop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A2199C5F8B003D75A0 /* hop1.png */; };
+		81A0F6B7199C5F8B003D75A0 /* hop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A3199C5F8B003D75A0 /* hop2.png */; };
+		81A0F6B8199C5F8B003D75A0 /* legRaise1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A4199C5F8B003D75A0 /* legRaise1.png */; };
+		81A0F6B9199C5F8B003D75A0 /* legRaise2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A5199C5F8B003D75A0 /* legRaise2.png */; };
+		81A0F6BA199C5F8B003D75A0 /* pullIn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A6199C5F8B003D75A0 /* pullIn1.png */; };
+		81A0F6BB199C5F8B003D75A0 /* pullIn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A7199C5F8B003D75A0 /* pullIn2.png */; };
+		81A0F6BC199C5F8B003D75A0 /* scissor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A8199C5F8B003D75A0 /* scissor1.png */; };
+		81A0F6BD199C5F8B003D75A0 /* scissor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A9199C5F8B003D75A0 /* scissor2.png */; };
+		81A0F6BE199C5F8B003D75A0 /* trunk1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6AA199C5F8B003D75A0 /* trunk1.png */; };
+		81A0F6BF199C5F8B003D75A0 /* trunk2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6AB199C5F8B003D75A0 /* trunk2.png */; };
+		81A0F6C1199C65A4003D75A0 /* stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6C0199C65A4003D75A0 /* stopwatch.png */; };
+		81A0F75319A00E88003D75A0 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74B19A00E88003D75A0 /* DateUtil.m */; };
+		81A0F75419A00E88003D75A0 /* DMLazyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74D19A00E88003D75A0 /* DMLazyScrollView.m */; };
+		81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74F19A00E88003D75A0 /* SACalendar.m */; };
+		81A0F75619A00E88003D75A0 /* SACalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F75119A00E88003D75A0 /* SACalendarCell.m */; };
+		81A0F75A19A0155B003D75A0 /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F75919A0155B003D75A0 /* TrackingViewController.m */; };
+		81A0F75E19A0158C003D75A0 /* TrackingInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F75D19A0158C003D75A0 /* TrackingInputViewController.m */; };
+		81A0F76119A015A2003D75A0 /* MotiPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F76019A015A2003D75A0 /* MotiPicViewController.m */; };
+		81A0F76519A015BA003D75A0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F76419A015BA003D75A0 /* SettingsViewController.m */; };
+		81A0F84319A185F8003D75A0 /* settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F84219A185F8003D75A0 /* settings.m */; };
 		81CBCD221996D1F0005DC03C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD211996D1F0005DC03C /* Foundation.framework */; };
 		81CBCD241996D1F0005DC03C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD231996D1F0005DC03C /* CoreGraphics.framework */; };
 		81CBCD261996D1F0005DC03C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD251996D1F0005DC03C /* UIKit.framework */; };
@@ -31,15 +61,12 @@
 		81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEC9199800BF005DC03C /* TargetedCell.m */; };
 		81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCECC19980711005DC03C /* WorkoutFeed.m */; };
 		81CBCED0199807A8005DC03C /* WorkoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCECF199807A8005DC03C /* WorkoutInfo.m */; };
-		81CBCED519980F7D005DC03C /* bodyweight leg raise 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */; };
-		81CBCED619980F7D005DC03C /* bodyweight leg raise 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */; };
-		81CBCED719980F7D005DC03C /* two 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED319980F7D005DC03C /* two 1.jpg */; };
-		81CBCED819980F7D005DC03C /* two 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCED419980F7D005DC03C /* two 2.jpg */; };
 		81CBCEDC1998167C005DC03C /* TargetedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */; };
 		81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCEDD1998385E005DC03C /* good times rg.ttf */; };
 		81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CBCEE119983AF6005DC03C /* WorkoutViewController.m */; };
 		81CBCEE4199AFBCB005DC03C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */; };
 		81CBCEE8199AFF05005DC03C /* beep-24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 81CBCEE7199AFF05005DC03C /* beep-24.mp3 */; };
+		B4475616E71A4C98A04F18C3 /* libPods-GET FIT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8015D7845378437BA98BA5B3 /* libPods-GET FIT.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +80,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8015D7845378437BA98BA5B3 /* libPods-GET FIT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GET FIT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81A0F698199C5F8B003D75A0 /* abVup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup1.png; sourceTree = "<group>"; };
+		81A0F699199C5F8B003D75A0 /* abVup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup2.png; sourceTree = "<group>"; };
+		81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift1.png; sourceTree = "<group>"; };
+		81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift2.png; sourceTree = "<group>"; };
+		81A0F69C199C5F8B003D75A0 /* bicycle1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bicycle1.png; sourceTree = "<group>"; };
+		81A0F69D199C5F8B003D75A0 /* bicycle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bicycle2.png; sourceTree = "<group>"; };
+		81A0F69E199C5F8B003D75A0 /* crunch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crunch1.png; sourceTree = "<group>"; };
+		81A0F69F199C5F8B003D75A0 /* crunch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crunch2.png; sourceTree = "<group>"; };
+		81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heelTouch1.png; sourceTree = "<group>"; };
+		81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heelTouch2.png; sourceTree = "<group>"; };
+		81A0F6A2199C5F8B003D75A0 /* hop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hop1.png; sourceTree = "<group>"; };
+		81A0F6A3199C5F8B003D75A0 /* hop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hop2.png; sourceTree = "<group>"; };
+		81A0F6A4199C5F8B003D75A0 /* legRaise1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = legRaise1.png; sourceTree = "<group>"; };
+		81A0F6A5199C5F8B003D75A0 /* legRaise2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = legRaise2.png; sourceTree = "<group>"; };
+		81A0F6A6199C5F8B003D75A0 /* pullIn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullIn1.png; sourceTree = "<group>"; };
+		81A0F6A7199C5F8B003D75A0 /* pullIn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullIn2.png; sourceTree = "<group>"; };
+		81A0F6A8199C5F8B003D75A0 /* scissor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scissor1.png; sourceTree = "<group>"; };
+		81A0F6A9199C5F8B003D75A0 /* scissor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scissor2.png; sourceTree = "<group>"; };
+		81A0F6AA199C5F8B003D75A0 /* trunk1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trunk1.png; sourceTree = "<group>"; };
+		81A0F6AB199C5F8B003D75A0 /* trunk2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trunk2.png; sourceTree = "<group>"; };
+		81A0F6C0199C65A4003D75A0 /* stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopwatch.png; sourceTree = "<group>"; };
+		81A0F74A19A00E88003D75A0 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		81A0F74B19A00E88003D75A0 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		81A0F74C19A00E88003D75A0 /* DMLazyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLazyScrollView.h; sourceTree = "<group>"; };
+		81A0F74D19A00E88003D75A0 /* DMLazyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLazyScrollView.m; sourceTree = "<group>"; };
+		81A0F74E19A00E88003D75A0 /* SACalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SACalendar.h; sourceTree = "<group>"; };
+		81A0F74F19A00E88003D75A0 /* SACalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SACalendar.m; sourceTree = "<group>"; };
+		81A0F75019A00E88003D75A0 /* SACalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SACalendarCell.h; sourceTree = "<group>"; };
+		81A0F75119A00E88003D75A0 /* SACalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SACalendarCell.m; sourceTree = "<group>"; };
+		81A0F75219A00E88003D75A0 /* SACalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SACalendarConstants.h; sourceTree = "<group>"; };
+		81A0F75819A0155B003D75A0 /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackingViewController.h; path = ../TrackingViewController.h; sourceTree = "<group>"; };
+		81A0F75919A0155B003D75A0 /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackingViewController.m; path = ../TrackingViewController.m; sourceTree = "<group>"; };
+		81A0F75C19A0158C003D75A0 /* TrackingInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingInputViewController.h; sourceTree = "<group>"; };
+		81A0F75D19A0158C003D75A0 /* TrackingInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingInputViewController.m; sourceTree = "<group>"; };
+		81A0F75F19A015A2003D75A0 /* MotiPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotiPicViewController.h; sourceTree = "<group>"; };
+		81A0F76019A015A2003D75A0 /* MotiPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotiPicViewController.m; sourceTree = "<group>"; };
+		81A0F76319A015BA003D75A0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		81A0F76419A015BA003D75A0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		81A0F84119A185F8003D75A0 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
+		81A0F84219A185F8003D75A0 /* settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settings.m; sourceTree = "<group>"; };
 		81CBCD1E1996D1F0005DC03C /* GET FIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GET FIT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CBCD211996D1F0005DC03C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		81CBCD231996D1F0005DC03C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,10 +160,6 @@
 		81CBCECC19980711005DC03C /* WorkoutFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutFeed.m; sourceTree = "<group>"; };
 		81CBCECE199807A8005DC03C /* WorkoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutInfo.h; sourceTree = "<group>"; };
 		81CBCECF199807A8005DC03C /* WorkoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutInfo.m; sourceTree = "<group>"; };
-		81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bodyweight leg raise 1.jpg"; sourceTree = "<group>"; };
-		81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bodyweight leg raise 2.jpg"; sourceTree = "<group>"; };
-		81CBCED319980F7D005DC03C /* two 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "two 1.jpg"; sourceTree = "<group>"; };
-		81CBCED419980F7D005DC03C /* two 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "two 2.jpg"; sourceTree = "<group>"; };
 		81CBCEDA1998167C005DC03C /* TargetedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetedDetailsViewController.h; sourceTree = "<group>"; };
 		81CBCEDB1998167C005DC03C /* TargetedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetedDetailsViewController.m; sourceTree = "<group>"; };
 		81CBCEDD1998385E005DC03C /* good times rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "good times rg.ttf"; sourceTree = "<group>"; };
@@ -103,6 +167,7 @@
 		81CBCEE119983AF6005DC03C /* WorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutViewController.m; sourceTree = "<group>"; };
 		81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		81CBCEE7199AFF05005DC03C /* beep-24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-24.mp3"; sourceTree = "<group>"; };
+		B8FDF9B7680147F88AFDD584 /* Pods-GET FIT.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GET FIT.xcconfig"; path = "Pods/Pods-GET FIT.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +179,7 @@
 				81CBCD241996D1F0005DC03C /* CoreGraphics.framework in Frameworks */,
 				81CBCD261996D1F0005DC03C /* UIKit.framework in Frameworks */,
 				81CBCD221996D1F0005DC03C /* Foundation.framework in Frameworks */,
+				B4475616E71A4C98A04F18C3 /* libPods-GET FIT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +196,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81A0F74919A00E88003D75A0 /* SACalendar */ = {
+			isa = PBXGroup;
+			children = (
+				81A0F74A19A00E88003D75A0 /* DateUtil.h */,
+				81A0F74B19A00E88003D75A0 /* DateUtil.m */,
+				81A0F74C19A00E88003D75A0 /* DMLazyScrollView.h */,
+				81A0F74D19A00E88003D75A0 /* DMLazyScrollView.m */,
+				81A0F74E19A00E88003D75A0 /* SACalendar.h */,
+				81A0F74F19A00E88003D75A0 /* SACalendar.m */,
+				81A0F75019A00E88003D75A0 /* SACalendarCell.h */,
+				81A0F75119A00E88003D75A0 /* SACalendarCell.m */,
+				81A0F75219A00E88003D75A0 /* SACalendarConstants.h */,
+			);
+			path = SACalendar;
+			sourceTree = "<group>";
+		};
+		81A0F75719A0131F003D75A0 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				81A0F74919A00E88003D75A0 /* SACalendar */,
+				81CBCD601996D433005DC03C /* CalendarViewController.h */,
+				81CBCD611996D433005DC03C /* CalendarViewController.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		81A0F75B19A0157B003D75A0 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				81A0F75819A0155B003D75A0 /* TrackingViewController.h */,
+				81A0F75919A0155B003D75A0 /* TrackingViewController.m */,
+				81A0F75C19A0158C003D75A0 /* TrackingInputViewController.h */,
+				81A0F75D19A0158C003D75A0 /* TrackingInputViewController.m */,
+			);
+			name = Tracking;
+			sourceTree = "<group>";
+		};
+		81A0F76219A015A8003D75A0 /* MotiPic */ = {
+			isa = PBXGroup;
+			children = (
+				81A0F75F19A015A2003D75A0 /* MotiPicViewController.h */,
+				81A0F76019A015A2003D75A0 /* MotiPicViewController.m */,
+			);
+			name = MotiPic;
+			sourceTree = "<group>";
+		};
+		81A0F76619A015BF003D75A0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				81A0F76319A015BA003D75A0 /* SettingsViewController.h */,
+				81A0F76419A015BA003D75A0 /* SettingsViewController.m */,
+				81A0F84119A185F8003D75A0 /* settings.h */,
+				81A0F84219A185F8003D75A0 /* settings.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		81A0F7B619A036F6003D75A0 /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
+				81CBCD361996D1F0005DC03C /* ViewController.h */,
+				81CBCD371996D1F0005DC03C /* ViewController.m */,
+			);
+			name = "Main Page";
+			sourceTree = "<group>";
+		};
 		81CBCD151996D1F0005DC03C = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +269,7 @@
 				81CBCD461996D1F1005DC03C /* GET FITTests */,
 				81CBCD201996D1F0005DC03C /* Frameworks */,
 				81CBCD1F1996D1F0005DC03C /* Products */,
+				B8FDF9B7680147F88AFDD584 /* Pods-GET FIT.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +290,7 @@
 				81CBCD231996D1F0005DC03C /* CoreGraphics.framework */,
 				81CBCD251996D1F0005DC03C /* UIKit.framework */,
 				81CBCD401996D1F1005DC03C /* XCTest.framework */,
+				8015D7845378437BA98BA5B3 /* libPods-GET FIT.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,15 +305,16 @@
 				81CBCD301996D1F0005DC03C /* AppDelegate.h */,
 				81CBCD311996D1F0005DC03C /* AppDelegate.m */,
 				81CBCD331996D1F0005DC03C /* Main.storyboard */,
-				81CBCD361996D1F0005DC03C /* ViewController.h */,
-				81CBCD371996D1F0005DC03C /* ViewController.m */,
+				81A0F7B619A036F6003D75A0 /* Main Page */,
 				81CBCD391996D1F0005DC03C /* Images.xcassets */,
+				81A0F75B19A0157B003D75A0 /* Tracking */,
 				81CBCD281996D1F0005DC03C /* Supporting Files */,
-				81CBCD601996D433005DC03C /* CalendarViewController.h */,
-				81CBCD611996D433005DC03C /* CalendarViewController.m */,
+				81A0F75719A0131F003D75A0 /* Calendar */,
 				81CBCEC41997F06D005DC03C /* Menu items */,
 				81CBCEDF19983AC8005DC03C /* Targeted Workout */,
 				81CBCEE9199AFF88005DC03C /* Main Workout */,
+				81A0F76219A015A8003D75A0 /* MotiPic */,
+				81A0F76619A015BF003D75A0 /* Settings */,
 			);
 			path = "GET FIT";
 			sourceTree = "<group>";
@@ -240,10 +375,27 @@
 		81CBCED919980F86005DC03C /* workout Images */ = {
 			isa = PBXGroup;
 			children = (
-				81CBCED119980F7D005DC03C /* bodyweight leg raise 1.jpg */,
-				81CBCED219980F7D005DC03C /* bodyweight leg raise 2.jpg */,
-				81CBCED319980F7D005DC03C /* two 1.jpg */,
-				81CBCED419980F7D005DC03C /* two 2.jpg */,
+				81A0F6C0199C65A4003D75A0 /* stopwatch.png */,
+				81A0F698199C5F8B003D75A0 /* abVup1.png */,
+				81A0F699199C5F8B003D75A0 /* abVup2.png */,
+				81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */,
+				81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */,
+				81A0F69C199C5F8B003D75A0 /* bicycle1.png */,
+				81A0F69D199C5F8B003D75A0 /* bicycle2.png */,
+				81A0F69E199C5F8B003D75A0 /* crunch1.png */,
+				81A0F69F199C5F8B003D75A0 /* crunch2.png */,
+				81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */,
+				81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */,
+				81A0F6A2199C5F8B003D75A0 /* hop1.png */,
+				81A0F6A3199C5F8B003D75A0 /* hop2.png */,
+				81A0F6A4199C5F8B003D75A0 /* legRaise1.png */,
+				81A0F6A5199C5F8B003D75A0 /* legRaise2.png */,
+				81A0F6A6199C5F8B003D75A0 /* pullIn1.png */,
+				81A0F6A7199C5F8B003D75A0 /* pullIn2.png */,
+				81A0F6A8199C5F8B003D75A0 /* scissor1.png */,
+				81A0F6A9199C5F8B003D75A0 /* scissor2.png */,
+				81A0F6AA199C5F8B003D75A0 /* trunk1.png */,
+				81A0F6AB199C5F8B003D75A0 /* trunk2.png */,
 			);
 			name = "workout Images";
 			sourceTree = "<group>";
@@ -281,9 +433,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81CBCD501996D1F1005DC03C /* Build configuration list for PBXNativeTarget "GET FIT" */;
 			buildPhases = (
+				CF81CC01F9534F6893A38CE2 /* Check Pods Manifest.lock */,
 				81CBCD1A1996D1F0005DC03C /* Sources */,
 				81CBCD1B1996D1F0005DC03C /* Frameworks */,
 				81CBCD1C1996D1F0005DC03C /* Resources */,
+				AFF44F532DE541A9A8B7357C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -350,15 +504,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */,
+				81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */,
+				81A0F6BB199C5F8B003D75A0 /* pullIn2.png in Resources */,
+				81A0F6B2199C5F8B003D75A0 /* crunch1.png in Resources */,
+				81A0F6BA199C5F8B003D75A0 /* pullIn1.png in Resources */,
+				81A0F6B6199C5F8B003D75A0 /* hop1.png in Resources */,
 				81CBCEE8199AFF05005DC03C /* beep-24.mp3 in Resources */,
-				81CBCED519980F7D005DC03C /* bodyweight leg raise 1.jpg in Resources */,
+				81A0F6C1199C65A4003D75A0 /* stopwatch.png in Resources */,
+				81A0F6B8199C5F8B003D75A0 /* legRaise1.png in Resources */,
+				81A0F6B0199C5F8B003D75A0 /* bicycle1.png in Resources */,
+				81A0F6B5199C5F8B003D75A0 /* heelTouch2.png in Resources */,
+				81A0F6BF199C5F8B003D75A0 /* trunk2.png in Resources */,
+				81A0F6BC199C5F8B003D75A0 /* scissor1.png in Resources */,
 				81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */,
+				81A0F6B1199C5F8B003D75A0 /* bicycle2.png in Resources */,
+				81A0F6B9199C5F8B003D75A0 /* legRaise2.png in Resources */,
+				81A0F6B3199C5F8B003D75A0 /* crunch2.png in Resources */,
 				81CBCD3A1996D1F0005DC03C /* Images.xcassets in Resources */,
 				81CBCD2C1996D1F0005DC03C /* InfoPlist.strings in Resources */,
-				81CBCED619980F7D005DC03C /* bodyweight leg raise 2.jpg in Resources */,
+				81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */,
+				81A0F6BE199C5F8B003D75A0 /* trunk1.png in Resources */,
+				81A0F6B4199C5F8B003D75A0 /* heelTouch1.png in Resources */,
+				81A0F6AF199C5F8B003D75A0 /* armAndLegLift2.png in Resources */,
+				81A0F6BD199C5F8B003D75A0 /* scissor2.png in Resources */,
 				81CBCD351996D1F0005DC03C /* Main.storyboard in Resources */,
-				81CBCED819980F7D005DC03C /* two 2.jpg in Resources */,
-				81CBCED719980F7D005DC03C /* two 1.jpg in Resources */,
+				81A0F6B7199C5F8B003D75A0 /* hop2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,26 +543,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AFF44F532DE541A9A8B7357C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-GET FIT-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF81CC01F9534F6893A38CE2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		81CBCD1A1996D1F0005DC03C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				81CBCD381996D1F0005DC03C /* ViewController.m in Sources */,
+				81A0F75319A00E88003D75A0 /* DateUtil.m in Sources */,
 				81CBCD321996D1F0005DC03C /* AppDelegate.m in Sources */,
 				81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */,
 				81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */,
+				81A0F75A19A0155B003D75A0 /* TrackingViewController.m in Sources */,
+				81A0F76119A015A2003D75A0 /* MotiPicViewController.m in Sources */,
 				81CBCD651996D612005DC03C /* RootViewController.m in Sources */,
+				81A0F75619A00E88003D75A0 /* SACalendarCell.m in Sources */,
 				81CBCD2E1996D1F0005DC03C /* main.m in Sources */,
 				81CBCEC719980082005DC03C /* TargetedListViewController.m in Sources */,
+				81A0F76519A015BA003D75A0 /* SettingsViewController.m in Sources */,
 				81CBCED0199807A8005DC03C /* WorkoutInfo.m in Sources */,
 				81CBCD681996D64F005DC03C /* LeftMenuViewController.m in Sources */,
+				81A0F75419A00E88003D75A0 /* DMLazyScrollView.m in Sources */,
 				81CBCD5E1996D263005DC03C /* RESideMenu.m in Sources */,
+				81A0F75E19A0158C003D75A0 /* TrackingInputViewController.m in Sources */,
 				81CBCEDC1998167C005DC03C /* TargetedDetailsViewController.m in Sources */,
 				81CBCD5D1996D263005DC03C /* RECommonFunctions.m in Sources */,
 				81CBCD5F1996D263005DC03C /* UIViewController+RESideMenu.m in Sources */,
 				81CBCD621996D433005DC03C /* CalendarViewController.m in Sources */,
 				81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */,
+				81A0F84319A185F8003D75A0 /* settings.m in Sources */,
+				81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,12 +726,14 @@
 		};
 		81CBCD511996D1F1005DC03C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8FDF9B7680147F88AFDD584 /* Pods-GET FIT.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GET FIT/GET FIT-Prefix.pch";
 				INFOPLIST_FILE = "GET FIT/GET FIT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -526,12 +741,14 @@
 		};
 		81CBCD521996D1F1005DC03C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8FDF9B7680147F88AFDD584 /* Pods-GET FIT.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GET FIT/GET FIT-Prefix.pch";
 				INFOPLIST_FILE = "GET FIT/GET FIT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

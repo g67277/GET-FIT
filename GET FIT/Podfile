@@ -1,0 +1,19 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, "7.0"
+
+target "GET FIT" do
+
+pod 'GraphKit', '~> 1.1'
+pod 'BButton'
+pod 'FrameAccessor', '~> 1.3.2'
+pod 'MKFoundationKit/NSArray', '~> 1.2.2'
+pod 'Cedar', '~> 0.9.5'
+pod 'Swizzlean', '~> 0.1.1'
+pod 'OCBorghettiView', '~> 0.0'
+
+end
+
+target "GET FITTests" do
+
+end
+
