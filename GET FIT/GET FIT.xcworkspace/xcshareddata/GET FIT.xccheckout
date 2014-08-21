@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>081211AE-AA45-409C-A68E-21E549F37737</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GET FIT</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1B93B45A-0E86-4D67-9F01-94E7578C9D54</key>
+		<string>https://github.com/g67277/GET-FIT.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GET FIT/GET FIT.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1B93B45A-0E86-4D67-9F01-94E7578C9D54</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/g67277/GET-FIT.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1B93B45A-0E86-4D67-9F01-94E7578C9D54</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B93B45A-0E86-4D67-9F01-94E7578C9D54</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GET-FIT</string>
+		</dict>
+	</array>
+</dict>
+</plist>

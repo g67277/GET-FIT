@@ -14,6 +14,10 @@
 @interface TrackingViewController : UIViewController<GKLineGraphDataSource>{
     IBOutlet UISegmentedControl* chartType;
     
+    UIImage *capturedScreen;
+    
+    //TESTING*******************************
+    
 }
 
 @property (nonatomic, weak) IBOutlet GKLineGraph *graph;
@@ -25,8 +29,8 @@
 @property (nonatomic, strong) IBOutlet UITextView *mainEvents;
 //----------------
 
-- (IBAction)onButtonDraw:(id)sender;
-- (IBAction)onButtonReset:(id)sender;
+@property (nonatomic, retain) IBOutlet UIView *longPressView;
+
 
 - (IBAction)onClick:(UIButton*)sender;
 

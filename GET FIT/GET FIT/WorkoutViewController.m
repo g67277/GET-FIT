@@ -43,7 +43,7 @@
     NSLog(@"%d", settingObject.restCount);
     //resting count from settings
     if (selectedRestCount == 0) {
-        selectedRestCount = 10;
+        selectedRestCount = 5;
     }
     
     if (targetedArrayWorkout == nil) {
@@ -76,6 +76,8 @@
     NSInteger minute = [components minute];
     NSLog(@"%ld, %ld", (long)hour, (long)minute);
     //------------------------------------------------------------------------------------------------------------
+    
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void) createImageArray: (NSArray*) workout{
@@ -173,6 +175,7 @@
         //sound
         if (count < 3) {
             [beepSound play];
+            
         }
         
         // if count reaches 1 reset and change the resting boolean
@@ -189,6 +192,7 @@
             setNum++;
             // indicator images function
             [self indicatorOnOff];
+            
         }else if(count == 0 && resting == true){
             count = DEFAULT_WORKOUT_TIME;
             resting = false;

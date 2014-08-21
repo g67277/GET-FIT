@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8151C3EE19A589DB0073DEE6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151C3ED19A589DB0073DEE6 /* Social.framework */; };
+		8151C3F019A589E60073DEE6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151C3EF19A589E60073DEE6 /* Accounts.framework */; };
+		8151C3F619A595A30073DEE6 /* M13ContextMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3F319A595A30073DEE6 /* M13ContextMenu.m */; };
+		8151C3F719A595A30073DEE6 /* M13ContextMenuItemIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3F519A595A30073DEE6 /* M13ContextMenuItemIOS7.m */; };
 		81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F698199C5F8B003D75A0 /* abVup1.png */; };
 		81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F699199C5F8B003D75A0 /* abVup2.png */; };
 		81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */; };
@@ -81,6 +85,12 @@
 
 /* Begin PBXFileReference section */
 		8015D7845378437BA98BA5B3 /* libPods-GET FIT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GET FIT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8151C3ED19A589DB0073DEE6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8151C3EF19A589E60073DEE6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8151C3F219A595A30073DEE6 /* M13ContextMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ContextMenu.h; sourceTree = "<group>"; };
+		8151C3F319A595A30073DEE6 /* M13ContextMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ContextMenu.m; sourceTree = "<group>"; };
+		8151C3F419A595A30073DEE6 /* M13ContextMenuItemIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ContextMenuItemIOS7.h; sourceTree = "<group>"; };
+		8151C3F519A595A30073DEE6 /* M13ContextMenuItemIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ContextMenuItemIOS7.m; sourceTree = "<group>"; };
 		81A0F698199C5F8B003D75A0 /* abVup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup1.png; sourceTree = "<group>"; };
 		81A0F699199C5F8B003D75A0 /* abVup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup2.png; sourceTree = "<group>"; };
 		81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift1.png; sourceTree = "<group>"; };
@@ -175,6 +185,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8151C3F019A589E60073DEE6 /* Accounts.framework in Frameworks */,
+				8151C3EE19A589DB0073DEE6 /* Social.framework in Frameworks */,
 				81CBCEE4199AFBCB005DC03C /* AVFoundation.framework in Frameworks */,
 				81CBCD241996D1F0005DC03C /* CoreGraphics.framework in Frameworks */,
 				81CBCD261996D1F0005DC03C /* UIKit.framework in Frameworks */,
@@ -196,6 +208,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8151C3F119A595A30073DEE6 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				8151C3F219A595A30073DEE6 /* M13ContextMenu.h */,
+				8151C3F319A595A30073DEE6 /* M13ContextMenu.m */,
+				8151C3F419A595A30073DEE6 /* M13ContextMenuItemIOS7.h */,
+				8151C3F519A595A30073DEE6 /* M13ContextMenuItemIOS7.m */,
+			);
+			name = Sharing;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		81A0F74919A00E88003D75A0 /* SACalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +249,7 @@
 		81A0F75B19A0157B003D75A0 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				8151C3F119A595A30073DEE6 /* Sharing */,
 				81A0F75819A0155B003D75A0 /* TrackingViewController.h */,
 				81A0F75919A0155B003D75A0 /* TrackingViewController.m */,
 				81A0F75C19A0158C003D75A0 /* TrackingInputViewController.h */,
@@ -285,6 +310,8 @@
 		81CBCD201996D1F0005DC03C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8151C3EF19A589E60073DEE6 /* Accounts.framework */,
+				8151C3ED19A589DB0073DEE6 /* Social.framework */,
 				81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */,
 				81CBCD211996D1F0005DC03C /* Foundation.framework */,
 				81CBCD231996D1F0005DC03C /* CoreGraphics.framework */,
@@ -588,6 +615,7 @@
 				81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */,
 				81A0F75A19A0155B003D75A0 /* TrackingViewController.m in Sources */,
 				81A0F76119A015A2003D75A0 /* MotiPicViewController.m in Sources */,
+				8151C3F719A595A30073DEE6 /* M13ContextMenuItemIOS7.m in Sources */,
 				81CBCD651996D612005DC03C /* RootViewController.m in Sources */,
 				81A0F75619A00E88003D75A0 /* SACalendarCell.m in Sources */,
 				81CBCD2E1996D1F0005DC03C /* main.m in Sources */,
@@ -603,6 +631,7 @@
 				81CBCD5F1996D263005DC03C /* UIViewController+RESideMenu.m in Sources */,
 				81CBCD621996D433005DC03C /* CalendarViewController.m in Sources */,
 				81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */,
+				8151C3F619A595A30073DEE6 /* M13ContextMenu.m in Sources */,
 				81A0F84319A185F8003D75A0 /* settings.m in Sources */,
 				81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */,
 			);

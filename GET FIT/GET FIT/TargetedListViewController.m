@@ -43,31 +43,35 @@
 
 - (void) navColor{
     NSString* colorTag = [targetedArray[0] valueForKey:@"workoutTag"];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
     if ([colorTag isEqualToString:@"upper"]) {
         self.navigationItem.title = @"Upper";
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:49/255.0f
+                                                                                 green:53/255.0f
+                                                                                  blue:64/255.0f
+                                                                                 alpha:1.0f]];
+        
         
     }else if([colorTag isEqualToString:@"mid"]){
         self.navigationItem.title = @"Mid";
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-        
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:250/255.0f
+                                                                                 green:186/255.0f
+                                                                                  blue:45/255.0f
+                                                                                 alpha:1.0f]];
     }else if([colorTag isEqualToString:@"lower"]){
         self.navigationItem.title = @"Lower";
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-        
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:233/255.0f
+                                                                                 green:64/255.0f
+                                                                                  blue:90/255.0f
+                                                                                 alpha:1.0f]];
     }else if([colorTag isEqualToString:@"sides"]){
         self.navigationItem.title = @"Sides";
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:49/255.0f green:53/255.0f blue:64/255.0f alpha:.9];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-        
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f
+                                                                                 green:139/255.0f
+                                                                                  blue:234/255.0f
+                                                                                 alpha:1.0f]];
     }
 }
 

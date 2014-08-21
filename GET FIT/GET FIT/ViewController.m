@@ -29,7 +29,10 @@
     NSString* title = @"GET FIT";
     self.navigationItem.title = title;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];    
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f
+                                                                             green:139/255.0f
+                                                                              blue:234/255.0f
+                                                                             alpha:1.0f]];
     
 }
 
