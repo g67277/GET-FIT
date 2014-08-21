@@ -47,7 +47,7 @@ static const int DEFAULT_WORKOUT_TIME = 4;
     int indicatorCount;
     int workoutNum;
     int setNum;
-    int numOfWorkoutSeconds;
+    double numOfWorkoutSeconds;
     int dynamicWorkCount;
     int selectedRestCount;
     

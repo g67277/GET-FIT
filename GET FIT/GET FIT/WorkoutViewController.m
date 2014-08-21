@@ -9,6 +9,7 @@
 #import "WorkoutViewController.h"
 #import "SettingsViewController.h"
 #import "settings.h"
+#import "AppDelegate.h"
 
 
 @interface WorkoutViewController ()
@@ -68,16 +69,7 @@
     
     [self setTimer];
     
-    //------------------------------------Pulling Date (for core data tracking)-----------------------------------
-    NSDate *date = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
-    NSInteger hour = [components hour];
-    NSInteger minute = [components minute];
-    NSLog(@"%ld, %ld", (long)hour, (long)minute);
-    //------------------------------------------------------------------------------------------------------------
     
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void) createImageArray: (NSArray*) workout{
@@ -282,16 +274,36 @@
 
 - (void) viewWillDisappear:(BOOL)animated{
     
+    //------------------------------------Pulling Date (for core data tracking)-----------------------------------
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    NSInteger day = [components day];
+    NSInteger month = [components month];
+    NSInteger year = [components year];
+    NSLog(@"%ld, %ld, %ld", (long)day, (long)month, (long)year);
+    NSString* dateOfWorkout = [NSString stringWithFormat:@"%ld, %ld, %ld", (long)day, (long)month, (long)year];
+    //------------------------------------------------------------------------------------------------------------
+
+    NSNumber* minsToBeSaved = [[NSNumber alloc] initWithDouble:numOfWorkoutSeconds / 60];
+    
+    NSLog(@"%@", minsToBeSaved);
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSManagedObject* currrentWorkoutMinutes = [NSEntityDescription insertNewObjectForEntityForName:@"WorkoutMinutes" inManagedObjectContext:context];
+    
+    [currrentWorkoutMinutes setValue:minsToBeSaved forKey:@"minutes"];
+    [currrentWorkoutMinutes setValue:dateOfWorkout forKeyPath:@"workoutDate"];
+
+    NSError* error;
+    [context save:&error];
     [timer invalidate];
 }
 
+#pragma mark - Back handling
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 

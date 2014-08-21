@@ -16,6 +16,18 @@
 
 @implementation ViewController
 
+- (void) viewWillAppear:(BOOL)animated{
+    
+    // Setting page title and custimizing the look
+    NSString* title = @"GET FIT";
+    self.navigationItem.title = title;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f
+                                                                             green:139/255.0f
+                                                                              blue:234/255.0f
+                                                                             alpha:1.0f]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,14 +37,7 @@
     targetedWorkoutArray = [[NSMutableArray alloc] init];
     
     
-    // Setting page title and custimizing the look
-    NSString* title = @"GET FIT";
-    self.navigationItem.title = title;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];    
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f
-                                                                             green:139/255.0f
-                                                                              blue:234/255.0f
-                                                                             alpha:1.0f]];
+    
     
 }
 

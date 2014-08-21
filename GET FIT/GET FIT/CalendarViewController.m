@@ -9,6 +9,7 @@
 #import "CalendarViewController.h"
 #import "SACalendar.h"
 #import "DateUtil.h"
+#import "AppDelegate.h"
 
 @interface CalendarViewController ()<SACalendarDelegate>
 
@@ -47,6 +48,46 @@
  */
 -(void) SACalendar:(SACalendar*)calendar didSelectDate:(int)day month:(int)month year:(int)year
 {
+    //NSMutableArray* toHoldMinutesForDay = [[NSMutableArray alloc] init];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // We want the contact entity, (this is where you can select the entity if there are more than one)
+    NSEntityDescription* entityDesc = [NSEntityDescription entityForName:@"WorkoutMinutes" inManagedObjectContext:context];
+    // initialzing a fetch request
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    // passing in the entity
+    [request setEntity:entityDesc];
+    NSString* toBeSearched = [NSString stringWithFormat:@"%ld, %ld, %ld", (long)day, (long)month, (long)year];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workoutDate = %@)", toBeSearched];
+    [request setPredicate:pred];
+    NSManagedObject* matches = nil;
+    
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request
+                                              error:&error];
+    NSNumber* incomingMinutes = [[NSNumber alloc] init];
+    double compinedMinutesForDate = 0;
+    
+    if ([objects count] == 0) {
+        NSLog(@"No matches");
+    }else{
+        for (int i = 0; i < [objects count]; i++) {
+            matches = objects[i];
+            //[toHoldMinutesForDay addObject:[matches valueForKey:@"minutes"]];
+            incomingMinutes = [matches valueForKey:@"minutes"];
+            compinedMinutesForDate += [incomingMinutes doubleValue];
+        }
+    }
+
+    
+    NSLog(@"%f", compinedMinutesForDate);
+    
+    NSString* minOfWorkout = [NSString stringWithFormat:@"%f", compinedMinutesForDate];
+    // this works for displaying data
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Workout Mintues" message:minOfWorkout delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+    [alert show];
+
     NSLog(@"Date Selected : %02i/%02i/%04i",day,month,year);
 }
 

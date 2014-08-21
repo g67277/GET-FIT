@@ -364,10 +364,10 @@
             cell.dateLabel.textColor = selectedDateTextColor;
             cell.dateLabel.font = boldFont;
             
-            NSString* testing = [NSString stringWithFormat:@"%i", (int)indexPath.row - firstDay + 1];
+            /*NSString* testing = [NSString stringWithFormat:@"%i", (int)indexPath.row - firstDay + 1];
             // this works for displaying data
             UIAlertView* alert = [[UIAlertView alloc]initWithTitle:testing message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alert show];
+            [alert show];*/
         }
         else{
             cell.selectedView.hidden = YES;

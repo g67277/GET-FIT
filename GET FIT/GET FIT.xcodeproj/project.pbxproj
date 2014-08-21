@@ -11,6 +11,9 @@
 		8151C3F019A589E60073DEE6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151C3EF19A589E60073DEE6 /* Accounts.framework */; };
 		8151C3F619A595A30073DEE6 /* M13ContextMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3F319A595A30073DEE6 /* M13ContextMenu.m */; };
 		8151C3F719A595A30073DEE6 /* M13ContextMenuItemIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3F519A595A30073DEE6 /* M13ContextMenuItemIOS7.m */; };
+		8151C3F919A5B0BA0073DEE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151C3F819A5B0BA0073DEE6 /* CoreData.framework */; };
+		8151C3FC19A5B0FE0073DEE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3FA19A5B0FE0073DEE6 /* Model.xcdatamodeld */; };
+		8151C3FF19A5B2680073DEE6 /* WorkoutMinutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3FE19A5B2680073DEE6 /* WorkoutMinutes.m */; };
 		81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F698199C5F8B003D75A0 /* abVup1.png */; };
 		81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F699199C5F8B003D75A0 /* abVup2.png */; };
 		81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */; };
@@ -91,6 +94,10 @@
 		8151C3F319A595A30073DEE6 /* M13ContextMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ContextMenu.m; sourceTree = "<group>"; };
 		8151C3F419A595A30073DEE6 /* M13ContextMenuItemIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ContextMenuItemIOS7.h; sourceTree = "<group>"; };
 		8151C3F519A595A30073DEE6 /* M13ContextMenuItemIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ContextMenuItemIOS7.m; sourceTree = "<group>"; };
+		8151C3F819A5B0BA0073DEE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8151C3FB19A5B0FE0073DEE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8151C3FD19A5B2680073DEE6 /* WorkoutMinutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutMinutes.h; sourceTree = "<group>"; };
+		8151C3FE19A5B2680073DEE6 /* WorkoutMinutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutMinutes.m; sourceTree = "<group>"; };
 		81A0F698199C5F8B003D75A0 /* abVup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup1.png; sourceTree = "<group>"; };
 		81A0F699199C5F8B003D75A0 /* abVup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup2.png; sourceTree = "<group>"; };
 		81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift1.png; sourceTree = "<group>"; };
@@ -185,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8151C3F919A5B0BA0073DEE6 /* CoreData.framework in Frameworks */,
 				8151C3F019A589E60073DEE6 /* Accounts.framework in Frameworks */,
 				8151C3EE19A589DB0073DEE6 /* Social.framework in Frameworks */,
 				81CBCEE4199AFBCB005DC03C /* AVFoundation.framework in Frameworks */,
@@ -218,6 +226,23 @@
 			);
 			name = Sharing;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		8151C40019A5B2720073DEE6 /* Core Data files */ = {
+			isa = PBXGroup;
+			children = (
+				8151C40119A5B2800073DEE6 /* main workout */,
+			);
+			name = "Core Data files";
+			sourceTree = "<group>";
+		};
+		8151C40119A5B2800073DEE6 /* main workout */ = {
+			isa = PBXGroup;
+			children = (
+				8151C3FD19A5B2680073DEE6 /* WorkoutMinutes.h */,
+				8151C3FE19A5B2680073DEE6 /* WorkoutMinutes.m */,
+			);
+			name = "main workout";
 			sourceTree = "<group>";
 		};
 		81A0F74919A00E88003D75A0 /* SACalendar */ = {
@@ -310,6 +335,7 @@
 		81CBCD201996D1F0005DC03C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8151C3F819A5B0BA0073DEE6 /* CoreData.framework */,
 				8151C3EF19A589E60073DEE6 /* Accounts.framework */,
 				8151C3ED19A589DB0073DEE6 /* Social.framework */,
 				81CBCEE3199AFBCB005DC03C /* AVFoundation.framework */,
@@ -342,6 +368,8 @@
 				81CBCEE9199AFF88005DC03C /* Main Workout */,
 				81A0F76219A015A8003D75A0 /* MotiPic */,
 				81A0F76619A015BF003D75A0 /* Settings */,
+				8151C3FA19A5B0FE0073DEE6 /* Model.xcdatamodeld */,
+				8151C40019A5B2720073DEE6 /* Core Data files */,
 			);
 			path = "GET FIT";
 			sourceTree = "<group>";
@@ -613,6 +641,7 @@
 				81CBCD321996D1F0005DC03C /* AppDelegate.m in Sources */,
 				81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */,
 				81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */,
+				8151C3FC19A5B0FE0073DEE6 /* Model.xcdatamodeld in Sources */,
 				81A0F75A19A0155B003D75A0 /* TrackingViewController.m in Sources */,
 				81A0F76119A015A2003D75A0 /* MotiPicViewController.m in Sources */,
 				8151C3F719A595A30073DEE6 /* M13ContextMenuItemIOS7.m in Sources */,
@@ -634,6 +663,7 @@
 				8151C3F619A595A30073DEE6 /* M13ContextMenu.m in Sources */,
 				81A0F84319A185F8003D75A0 /* settings.m in Sources */,
 				81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */,
+				8151C3FF19A5B2680073DEE6 /* WorkoutMinutes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +884,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8151C3FA19A5B0FE0073DEE6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8151C3FB19A5B0FE0073DEE6 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8151C3FB19A5B0FE0073DEE6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 81CBCD161996D1F0005DC03C /* Project object */;
 }
