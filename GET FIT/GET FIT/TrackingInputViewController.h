@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TrackingInputViewController : UIViewController
-@property (nonatomic, strong) IBOutlet UITextField *eventField;
-@property (nonatomic, strong) NSString *eventString;
-@property (nonatomic) long count;
+@property (strong, nonatomic) IBOutlet UITextField *weightField;
+@property (strong, nonatomic) IBOutlet UITextField *sizeField;
+
+- (IBAction)onClick:(id)sender;
 
 @end

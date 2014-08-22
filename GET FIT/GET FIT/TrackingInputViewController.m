@@ -7,43 +7,14 @@
 //
 
 #import "TrackingInputViewController.h"
+#import "AppDelegate.h"
 
 @interface TrackingInputViewController ()
 
 @end
 
 @implementation TrackingInputViewController
-@synthesize eventField, eventString;
-
-//--------------------- Sending info back to main page ------------------------
-
-- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    
-    if ([identifier isEqualToString:@"toTracking"]) {
-        eventString = eventField.text;
-        
-    }
-    return YES;
-    
-}
-//--------------------------
-
-//---------- Hiding Keyboard when touching anything but the field----------------------
-
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    [eventField resignFirstResponder];
-}
-//-------------------------------------------------------------------------------------
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize weightField, sizeField;
 
 - (void)viewDidLoad
 {
@@ -51,21 +22,76 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)onClick:(id)sender{
+    
+    //------------------------------------Pulling Date (for core data tracking)-----------------------------------
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    NSInteger day = [components day];
+    NSInteger month = [components month];
+    NSInteger year = [components year];
+    NSLog(@"%ld, %ld, %ld", (long)day, (long)month, (long)year);
+    NSString* dateOfEntry = [NSString stringWithFormat:@"%ld, %ld, %ld", (long)day, (long)month, (long)year];
+    //------------------------------------------------------------------------------------------------------------
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSManagedObject* newTrack = [NSEntityDescription insertNewObjectForEntityForName:@"WeightNWeistSize" inManagedObjectContext:context];
+    
+    int weightCount = weightField.text.length;
+    int sizeCount = sizeField.text.length;
+    
+    if (weightCount > 0 && sizeCount > 0) {
+        
+        [newTrack setValue:weightField.text forKey:@"weight"];
+        [newTrack setValue:sizeField.text forKey:@"weistSize"];
+        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+        NSLog(@"Both Saved: %@ || %@", weightField.text, sizeField.text);
+    }else if (weightCount > 0){
+        [newTrack setValue:weightField.text forKey:@"weight"];
+        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+        NSLog(@"only weight Saved: %@", weightField.text);
+    }else if (sizeCount > 0){
+        [newTrack setValue:sizeField.text forKey:@"weistSize"];
+        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+        NSLog(@"only size Saved: %@", sizeField.text);
+    }
+    
+    NSError* error;
+    [context save:&error];
+    NSLog(@"Saved!");
+    
+}
+
+//---------- Hiding Keyboard when touching anything but the field----------------------
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [weightField resignFirstResponder];
+    [sizeField resignFirstResponder];
+    
+}
+//-------------------------------------------------------------------------------------
+
+
+
+- (BOOL) returnKey:(UITextField*)textField{
+    if (textField) {
+        [textField resignFirstResponder];
+    }
+    return NO;
+}
+
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

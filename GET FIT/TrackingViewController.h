@@ -16,6 +16,10 @@
     
     UIImage *capturedScreen;
     
+    NSManagedObject* matches;
+    NSMutableArray* weightArray;
+    NSMutableArray* sizeArray;
+    
     //TESTING*******************************
     
 }

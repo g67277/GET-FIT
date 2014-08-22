@@ -8,6 +8,7 @@
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "AppDelegate.h"
 #import "TrackingViewController.h"
 #import "TrackingInputViewController.h"
 #import "M13ContextMenu.h"
@@ -25,20 +26,28 @@
 }
 @synthesize mainEvents;
 
+- (void) viewWillAppear:(BOOL)animated{
+    [self retriveCoreData];
+    // THis is to change the chart input
+
+    [self _setupWeightGraph];
+
+}
+
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    //[self retriveCoreData];
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1]];
     self.view.backgroundColor = [UIColor gk_cloudsColor];
     
-    // THis is to change the chart input
-    [self _setupExampleGraph];
-
-        //    [self _setupTestingGraphHigh];
+    //------------------------------------------------------------------
     
-    // for sharing
+    
+    // for sharing------------------------------------------------------------------
     //Create the items
     M13ContextMenuItemIOS7 *facebook = [[M13ContextMenuItemIOS7 alloc] initWithUnselectedIcon:[UIImage imageNamed:@"facebookselected"] selectedIcon:[UIImage imageNamed:@"facebook"]];
     M13ContextMenuItemIOS7 *twitter = [[M13ContextMenuItemIOS7 alloc] initWithUnselectedIcon:[UIImage imageNamed:@"UploadIcon"] selectedIcon:[UIImage imageNamed:@"UploadIconSelected"]];
@@ -50,8 +59,35 @@
     longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:menu action:@selector(showMenuUponActivationOfGetsure:)];
     [_longPressView setUserInteractionEnabled:YES];
     [_longPressView addGestureRecognizer:longPress];
+    //------------------------------------------------------------------
+
     
 
+}
+
+- (void) retriveCoreData{
+    
+    // Core data items -------------------------------------------------
+    weightArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, nil];
+    sizeArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, nil];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // We want the contact entity, (this is where you can select the entity if there are more than one)
+    NSEntityDescription* entityDesc = [NSEntityDescription entityForName:@"WeightNWeistSize" inManagedObjectContext:context];
+    // initialzing a fetch request
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    // passing in the entity
+    [request setEntity:entityDesc];
+    [request setPropertiesToFetch:@[@"weight"]];
+    matches = nil;
+    
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request
+                                              error:&error];
+    [self filterData:objects];
+
+    
 }
 
 - (void) facebookRefresh{
@@ -94,10 +130,10 @@
     if (sender.tag == 0) {
         if (chartType.selectedSegmentIndex == 0) {
             [self.graph reset];
-            [self _setupExampleGraph];
+            [self _setupWeightGraph];
         }else {
             [self.graph reset];
-            [self _setupTestingGraphLow];
+            [self _setupWeistSizeGraph];
         }
 
     }else if (sender.tag == 1){
@@ -164,20 +200,12 @@
         }
     };
     
-    //  Set the initial body of the Tweet
-    [tweetSheet setInitialText:@"just setting up my twttr"];
-    
     //  Adds an image to the Tweet.  For demo purposes, assume we have an
     //  image named 'larry.png' that we wish to attach
     if (![tweetSheet addImage:capturedScreen]) {
         NSLog(@"Unable to add the image!");
     }
-    
-    /* Add an URL to the Tweet.  You can add multiple URLs.
-    if (![tweetSheet addURL:[NSURL URLWithString:@"http://twitter.com/"]]){
-        NSLog(@"Unable to add the URL!");
-    }*/
-    
+
     //  Presents the Tweet Sheet to the user
     [self presentViewController:tweetSheet animated:NO completion:^{
         NSLog(@"Tweet sheet has been presented.");
@@ -185,29 +213,24 @@
 }
 
 - (IBAction) done:(UIStoryboardSegue*)segue{
-    
-    TrackingInputViewController *inputVC = segue.sourceViewController;
-    
-    
-    NSString *currentEvent = [NSString stringWithFormat:@"%@\n", inputVC.eventString];
-    NSString *allEvents = [mainEvents.text stringByAppendingString:currentEvent];
-    NSLog(@"%@", allEvents);
-    
-    mainEvents.text = allEvents;
-    
+
 }
 
-- (void)_setupExampleGraph {
+- (void)_setupWeightGraph {
     
+
     self.data = @[
-                  @[@20, @40, @20, @60, @40, @140, @80],
+                  @[@100, weightArray[0], weightArray[1], weightArray[2], weightArray[3], weightArray[4], weightArray[5]],
                   //@[@40, @20, @60, @100, @60, @20, @60],
                   //@[@80, @60, @40, @160, @100, @40, @110],
                   //@[@120, @150, @80, @120, @140, @100, @0],
                   //                  @[@620, @650, @580, @620, @540, @400, @0]
                   ];
+
     
-    self.labels = @[@"2001", @"2002", @"2003", @"2004", @"2005", @"2006", @"2007"];
+
+    
+    self.labels = @[@"", @"1-5", @"6-10", @"11-15", @"16-20", @"21-25", @"25-31"];
     
     self.graph.dataSource = self;
     self.graph.lineWidth = 3.0;
@@ -215,52 +238,41 @@
     self.graph.valueLabelCount = 6;
     
     [self.graph draw];
+    [self.graph reset];
+    [self.graph draw];
 
 }
 
-- (void)_setupTestingGraphLow {
-    
+- (void)_setupWeistSizeGraph {
+
     /*
      A custom max and min values can be achieved by adding
      values for another line and setting its color to clear.
      */
     
     self.data = @[
-                  @[@10, @4, @8, @2, @9, @3, @6],
-                  @[@1, @2, @3, @4, @5, @6, @10]
+                  @[@30, sizeArray[0], sizeArray[1], sizeArray[2], sizeArray[3], sizeArray[4], sizeArray[5]],
+                  //@[@40, @20, @60, @100, @60, @20, @60],
+                  //@[@80, @60, @40, @160, @100, @40, @110],
+                  //@[@120, @150, @80, @120, @140, @100, @0],
+                  //                  @[@620, @650, @580, @620, @540, @400, @0]
                   ];
-    //    self.data = @[
-    //                  @[@2, @2, @2, @2, @2, @2, @6],
-    //                  @[@1, @1, @1, @1, @1, @1, @1]
-    //                  ];
     
-    self.labels = @[@"2001", @"2002", @"2003", @"2004", @"2005", @"2006", @"2007"];
+    
+    
+    
+    self.labels = @[@"", @"1-5", @"6-10", @"11-15", @"16-20", @"21-25", @"25-31"];
     
     self.graph.dataSource = self;
     self.graph.lineWidth = 3.0;
     
     //    self.graph.startFromZero = YES;
-    self.graph.valueLabelCount = 10;
+    self.graph.valueLabelCount = 6;
     
     [self.graph draw];
 }
 
-- (void)_setupTestingGraphHigh {
-    
-    self.data = @[
-                  @[@1000, @2000, @3000, @4000, @5000, @6000, @10000]
-                  ];
-    
-    self.labels = @[@"2001", @"2002", @"2003", @"2004", @"2005", @"2006", @"2007"];
-    
-    self.graph.dataSource = self;
-    self.graph.lineWidth = 3.0;
-    
-    //    self.graph.startFromZero = YES;
-    self.graph.valueLabelCount = 10;
-    
-    [self.graph draw];
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -308,6 +320,121 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+// Data filter-----------------------------
+- (void) filterData: (NSArray*) objects{
+    
+    // nsnumber formator
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber;
+    //-----------------
+    
+    NSString *string = @"54";
+    NSNumber *number = @([string intValue]);
+    NSNumber *test2 = [[NSNumber alloc] initWithInt:4];
+    
+    if ([objects count] == 0) {
+        NSLog(@"No matches");
+        // put an alert here
+    }else{
+        for (int i = 0; i < [objects count]; i++) {
+            matches = objects[i];
+            
+            NSString *dateCompareString = [[matches valueForKey:@"entryDate"] substringToIndex:[[matches valueForKey:@"entryDate"] length]-9];
+            int dateCompare = [dateCompareString intValue];
+            
+            if (dateCompare > 0 && dateCompare < 6 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    weightArray[0] = myNumber;
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    sizeArray[0] = myNumber;
+                }
+                
+            }else if (dateCompare > 5 && dateCompare < 11 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    weightArray[1] = myNumber;
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    sizeArray[1] = myNumber;
+                }
+                
+            }else if (dateCompare > 10 && dateCompare < 16 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    weightArray[2] = myNumber;
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    sizeArray[2] = myNumber;
+                }
+                
+            }else if (dateCompare > 15 && dateCompare < 21 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    weightArray[3] = myNumber;
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    sizeArray[3] = myNumber;
+                }
+                
+            }else if (dateCompare > 20 && dateCompare < 26 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                }
+                
+            }else if (dateCompare > 25 && dateCompare < 32 ) {
+                if ([matches valueForKey:@"weight"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                    weightArray[5] = myNumber;
+                }
+                if ([matches valueForKey:@"weistSize"] == nil) {
+                    NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                }else{
+                    myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                    sizeArray[5] = myNumber;
+                }
+                
+            }
+            
+        }
+    }
+    NSLog(@"%@", sizeArray[4]);
+
 }
 
 //TESTING *********************************************************

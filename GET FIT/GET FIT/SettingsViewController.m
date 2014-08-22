@@ -236,9 +236,6 @@
         default:
             break;
     }
-    
-    
-    
 }
 
 // Changnes the units for tracking based on user selection
