@@ -11,7 +11,7 @@
 #import "WorkoutFeed.h"
 #import "settings.h"
 #import "SettingsViewController.h"
-static const int DEFAULT_WORKOUT_TIME = 4;
+static const int DEFAULT_WORKOUT_TIME = 5;
 //static const int DEFAULT_RESTING = 10;
 
 @interface WorkoutViewController : UIViewController <AVAudioPlayerDelegate>{

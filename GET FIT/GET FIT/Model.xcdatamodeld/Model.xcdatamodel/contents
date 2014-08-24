@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Images" syncable="YES">
+        <attribute name="img" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlPath" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="WeightNWeistSize" syncable="YES">
         <attribute name="entryDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,7 +15,8 @@
         <attribute name="workoutDate" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WorkoutMinutes" positionX="-54" positionY="-9" width="128" height="73"/>
         <element name="WeightNWeistSize" positionX="-54" positionY="9" width="128" height="88"/>
+        <element name="WorkoutMinutes" positionX="106" positionY="9" width="128" height="73"/>
+        <element name="Images" positionX="27" positionY="27" width="128" height="90"/>
     </elements>
 </model>

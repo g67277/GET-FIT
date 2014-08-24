@@ -131,7 +131,7 @@
     pauseWork = false;
     // Starting animating workout
     [self imageAnimation];
-    [animationImageView startAnimating];
+    //[animationImageView startAnimating];
     //setting the workout to be animated
     //workoutNum = 1;
     
@@ -159,31 +159,32 @@
         [timer invalidate];
         [animationImageView stopAnimating];
     }else{
-        // subtracting 1 from count to countdown
-        count = count - 1;
         // updating label text
-        countDownLabel.text = [NSString stringWithFormat:@"%d", count + 1];
+        countDownLabel.text = [NSString stringWithFormat:@"%d", count];
         
         //sound
-        if (count < 3) {
+        if (count > 0 && count < 4) {
             [beepSound play];
-            
         }
         
-        // if count reaches 1 reset and change the resting boolean
+        // indicator if statement
+        if (count == 0 && resting == false) {
+            setNum++;
+            // indicator images function
+            [self indicatorOnOff];
+        }
+        
+        // if count reaches 0 reset and change the resting boolean
         if (count == 0 && resting == false) {
             count = selectedRestCount;
-            NSLog(@"%d", selectedRestCount);
             // if in resting, stop animating
             [animationImageView stopAnimating];
-            if (setNum != dynamicWorkCount) {
+            if (setNum < dynamicWorkCount + 1) {
                 animationImageView.image = [UIImage imageNamed: @"stopwatch.png"];
                 workTitle.text = @"Rest Time...";
             }
             resting = true;
-            setNum++;
-            // indicator images function
-            [self indicatorOnOff];
+            
             
         }else if(count == 0 && resting == true){
             count = DEFAULT_WORKOUT_TIME;
@@ -193,11 +194,20 @@
             [animationImageView stopAnimating];
             workTitle.text = @"Rest Time...";
 
-        }else if(resting == false){
+        }
+        
+        if(resting == false){
             numOfWorkoutSeconds++;
+            
+            // need to update -- doesn't need to run everytime
             [self imageAnimation];
             [animationImageView startAnimating];
         }
+        // updating label text
+        countDownLabel.text = [NSString stringWithFormat:@"%d", count];
+        // subtracting 1 from count to countdown
+        count--;
+
     }
 }
 
