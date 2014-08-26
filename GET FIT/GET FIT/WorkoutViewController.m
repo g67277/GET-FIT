@@ -8,7 +8,6 @@
 
 #import "WorkoutViewController.h"
 #import "SettingsViewController.h"
-#import "settings.h"
 #import "AppDelegate.h"
 
 
@@ -36,15 +35,16 @@
     workoutFeed = [[WorkoutFeed alloc] init];
     
     workoutImages = [[NSMutableArray alloc]init];
+
     
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     
-    settingsVC = [[SettingsViewController alloc] init];
-    settingObject = [[settings alloc] init];
-    selectedRestCount = settingObject.restCount;
-    NSLog(@"%d", settingObject.restCount);
+    NSNumber* test = [userDefaults objectForKey:@"restingTime"];
+    
+    selectedRestCount = [test intValue];
     //resting count from settings
     if (selectedRestCount == 0) {
-        selectedRestCount = 5;
+        selectedRestCount = 10;
     }
     
     if (targetedArrayWorkout == nil) {

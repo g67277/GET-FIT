@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import "RESideMenu.h"
-#import "settings.h"
 #import "OCBorghettiView.h"
 
 
@@ -22,9 +21,7 @@
     IBOutlet UIButton* menuButton;
     
     UILocalNotification *localNotification;
-    
-    settings* settingsObject;
-    
+        
 }
 
 @property (strong, nonatomic) EKEventStore *eventStore;

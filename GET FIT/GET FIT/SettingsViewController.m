@@ -7,7 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-#import "settings.h"
+
 
 
 @interface SettingsViewController ()
@@ -172,17 +172,20 @@
         }else if (indexPath == 1){
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
             [self setNotification:[self notificationDateFormatting:@"T22:00:00Z"]];
+            localNotification.repeatInterval = NSDayCalendarUnit;
             
         }else if (indexPath == 2){
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
             [self setNotification:[self notificationDateFormatting:@"T11:00:00Z"]];
             [self setNotification:[self notificationDateFormatting:@"T22:00:00Z"]];
+            localNotification.repeatInterval = NSDayCalendarUnit;
 
         }else if (indexPath == 3){
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
             [self setNotification:[self notificationDateFormatting:@"T11:00:00Z"]];
             [self setNotification:[self notificationDateFormatting:@"T17:00:00Z"]];
             [self setNotification:[self notificationDateFormatting:@"T22:00:00Z"]];
+            localNotification.repeatInterval = NSDayCalendarUnit;
         }
     
     
@@ -213,34 +216,58 @@
 
 // Sets the resting interval based on user selection
 - (void) restSelection: (long) indexPath{
-    settings* rest1 = [[settings alloc] init];
-
+    
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] init];
+    NSNumber* restingObject = [[NSNumber alloc ]init];
     
     switch (indexPath) {
         case 0:
-            
-            rest1.restCount = 5;
+            restingObject = [NSNumber numberWithInt:5];
+            [userDefaults setObject:restingObject forKey:@"restingTime"];
             break;
         case 1:
-            rest1.restCount = 10;
+            restingObject = [NSNumber numberWithInt:10];
+            [userDefaults setObject:restingObject forKey:@"restingTime"];
             break;
         case 2:
-            rest1.restCount = 15;
+            restingObject = [NSNumber numberWithInt:15];
+            [userDefaults setObject:restingObject forKey:@"restingTime"];
             break;
         case 3:
-            rest1.restCount =20;
+            restingObject = [NSNumber numberWithInt:20];
+            [userDefaults setObject:restingObject forKey:@"restingTime"];
             break;
         case 4:
-            rest1.restCount = 30;
+            restingObject = [NSNumber numberWithInt:30];
+            [userDefaults setObject:restingObject forKey:@"restingTime"];
             break;
         default:
             break;
     }
+    
+    [userDefaults synchronize];
+
 }
 
 // Changnes the units for tracking based on user selection
 - (void) unitSelection: (long) indexPath{
+    NSUserDefaults* unitDefault = [[NSUserDefaults alloc] init];
     
+    
+    switch (indexPath) {
+        case 0:
+            [unitDefault setBool:NO forKey:@"unitType"];
+            break;
+        case 1:
+            [unitDefault setBool:YES forKey:@"unitType"];
+
+            break;
+        default:
+            break;
+    }
+    
+    [unitDefault synchronize];
+
 }
 
 - (BOOL)shouldAutorotate

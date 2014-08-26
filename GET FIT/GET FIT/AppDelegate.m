@@ -14,6 +14,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] init];
+    
+    if ([userDefaults objectForKey:@"restingTime"] != nil){
+        
+    }
+    if ([userDefaults boolForKey:@"unitType"] != nil){
+    
+    }
+    
+    
     // Override point for customization after application launch.
     application.applicationIconBadgeNumber = 0;
     return YES;

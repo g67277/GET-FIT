@@ -9,12 +9,15 @@
 #import "ViewController.h"
 #import "WorkoutInfo.h"
 #import "TargetedListViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+
 
 - (void) viewWillAppear:(BOOL)animated{
     

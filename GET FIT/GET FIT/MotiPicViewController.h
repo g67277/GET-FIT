@@ -13,11 +13,23 @@
     
     IBOutlet UITableView* motiTable;
     IBOutlet UIButton* camButton;
+    
+    IBOutlet UIView* mergEffectView;
+    IBOutlet UIImageView* mergeAnimation;
+    
     UIImagePickerController *picker;
     NSMutableArray* camPicArray;
+    NSMutableArray* camDateArray;
+    
+    
+    NSManagedObject* matches;
+    NSMutableArray* weightArray;
+    NSMutableArray* sizeArray;
     
 }
 
-- (IBAction)onClick:(id)sender;
+@property (copy, nonatomic) NSArray* testPics;
+
+- (IBAction)onClick:(UIButton *)sender;
 
 @end

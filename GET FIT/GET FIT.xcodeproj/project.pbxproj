@@ -43,7 +43,7 @@
 		81A0F75E19A0158C003D75A0 /* TrackingInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F75D19A0158C003D75A0 /* TrackingInputViewController.m */; };
 		81A0F76119A015A2003D75A0 /* MotiPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F76019A015A2003D75A0 /* MotiPicViewController.m */; };
 		81A0F76519A015BA003D75A0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F76419A015BA003D75A0 /* SettingsViewController.m */; };
-		81A0F84319A185F8003D75A0 /* settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F84219A185F8003D75A0 /* settings.m */; };
+		81BF3FD419AAA6DF00ED644E /* PicEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BF3FD319AAA6DF00ED644E /* PicEntity.m */; };
 		81CBCD221996D1F0005DC03C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD211996D1F0005DC03C /* Foundation.framework */; };
 		81CBCD241996D1F0005DC03C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD231996D1F0005DC03C /* CoreGraphics.framework */; };
 		81CBCD261996D1F0005DC03C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CBCD251996D1F0005DC03C /* UIKit.framework */; };
@@ -136,8 +136,8 @@
 		81A0F76019A015A2003D75A0 /* MotiPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotiPicViewController.m; sourceTree = "<group>"; };
 		81A0F76319A015BA003D75A0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		81A0F76419A015BA003D75A0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		81A0F84119A185F8003D75A0 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
-		81A0F84219A185F8003D75A0 /* settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settings.m; sourceTree = "<group>"; };
+		81BF3FD219AAA6DF00ED644E /* PicEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicEntity.h; sourceTree = "<group>"; };
+		81BF3FD319AAA6DF00ED644E /* PicEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicEntity.m; sourceTree = "<group>"; };
 		81CBCD1E1996D1F0005DC03C /* GET FIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GET FIT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CBCD211996D1F0005DC03C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		81CBCD231996D1F0005DC03C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -288,6 +288,8 @@
 			children = (
 				81A0F75F19A015A2003D75A0 /* MotiPicViewController.h */,
 				81A0F76019A015A2003D75A0 /* MotiPicViewController.m */,
+				81BF3FD219AAA6DF00ED644E /* PicEntity.h */,
+				81BF3FD319AAA6DF00ED644E /* PicEntity.m */,
 			);
 			name = MotiPic;
 			sourceTree = "<group>";
@@ -297,8 +299,6 @@
 			children = (
 				81A0F76319A015BA003D75A0 /* SettingsViewController.h */,
 				81A0F76419A015BA003D75A0 /* SettingsViewController.m */,
-				81A0F84119A185F8003D75A0 /* settings.h */,
-				81A0F84219A185F8003D75A0 /* settings.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -640,6 +640,7 @@
 				81A0F75319A00E88003D75A0 /* DateUtil.m in Sources */,
 				81CBCD321996D1F0005DC03C /* AppDelegate.m in Sources */,
 				81CBCEE219983AF6005DC03C /* WorkoutViewController.m in Sources */,
+				81BF3FD419AAA6DF00ED644E /* PicEntity.m in Sources */,
 				81CBCECA199800BF005DC03C /* TargetedCell.m in Sources */,
 				8151C3FC19A5B0FE0073DEE6 /* Model.xcdatamodeld in Sources */,
 				81A0F75A19A0155B003D75A0 /* TrackingViewController.m in Sources */,
@@ -661,7 +662,6 @@
 				81CBCD621996D433005DC03C /* CalendarViewController.m in Sources */,
 				81CBCECD19980711005DC03C /* WorkoutFeed.m in Sources */,
 				8151C3F619A595A30073DEE6 /* M13ContextMenu.m in Sources */,
-				81A0F84319A185F8003D75A0 /* settings.m in Sources */,
 				81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */,
 				8151C3FF19A5B2680073DEE6 /* WorkoutMinutes.m in Sources */,
 			);

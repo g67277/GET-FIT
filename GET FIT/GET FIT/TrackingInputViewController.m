@@ -18,6 +18,17 @@
 
 - (void)viewDidLoad
 {
+    
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]) {
+        NSLog(@"user default for units 1 %hhd", [[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]);
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"test" message:@"1" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        NSLog(@"user default for units 2 %hhd", [[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]);
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"test" message:@"2" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -39,28 +50,40 @@
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSManagedObject* newTrack = [NSEntityDescription insertNewObjectForEntityForName:@"WeightNWeistSize" inManagedObjectContext:context];
     
+    
+    
     int weightCount = weightField.text.length;
     int sizeCount = sizeField.text.length;
     
-    if (weightCount > 0 && sizeCount > 0) {
+    //NSUserDefaults* unitDefault = [NSUserDefaults standardUserDefaults];
+    
+    if (weightCount < 0 && sizeCount < 0) {
         
-        [newTrack setValue:weightField.text forKey:@"weight"];
-        [newTrack setValue:sizeField.text forKey:@"weistSize"];
-        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-        NSLog(@"Both Saved: %@ || %@", weightField.text, sizeField.text);
-    }else if (weightCount > 0){
-        [newTrack setValue:weightField.text forKey:@"weight"];
-        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-        NSLog(@"only weight Saved: %@", weightField.text);
-    }else if (sizeCount > 0){
-        [newTrack setValue:sizeField.text forKey:@"weistSize"];
-        [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-        NSLog(@"only size Saved: %@", sizeField.text);
+        // error nothing entered
+        
+    }else{
+        if (weightCount > 0 && sizeCount > 0) {
+            
+            [newTrack setValue:weightField.text forKey:@"weight"];
+            [newTrack setValue:sizeField.text forKey:@"weistSize"];
+            [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+            NSLog(@"Both Saved: %@ || %@", weightField.text, sizeField.text);
+        }else if (weightCount > 0){
+            [newTrack setValue:weightField.text forKey:@"weight"];
+            [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+            NSLog(@"only weight Saved: %@", weightField.text);
+        }else if (sizeCount > 0){
+            [newTrack setValue:sizeField.text forKey:@"weistSize"];
+            [newTrack setValue:dateOfEntry forKey:@"entryDate"];
+            NSLog(@"only size Saved: %@", sizeField.text);
+        }
+        
+        NSError* error;
+        [context save:&error];
+        NSLog(@"Saved!");
     }
     
-    NSError* error;
-    [context save:&error];
-    NSLog(@"Saved!");
+    
     
 }
 
