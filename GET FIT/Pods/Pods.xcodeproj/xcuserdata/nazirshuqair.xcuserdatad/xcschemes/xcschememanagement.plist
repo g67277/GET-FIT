@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-GET FIT-AMSmoothAlert.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GET FIT-BButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,12 +24,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GET FIT-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GET FIT-GraphKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-GET FIT-MKFoundationKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GET FIT-NZAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GET FIT-UIImage-Helpers.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GET FIT.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10A2BD41C4E44D36A998A93D</key>
+		<key>0C5A302DEDB54974BBF5EE57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30568B596C3A49CAA7846039</key>
+		<key>0F286F75EB4E4FC9940DA377</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54708C2923E64C9697D1ADA0</key>
+		<key>468C054447AA4BC88A9D3492</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63E2D2970F0E49E1A4AA9279</key>
+		<key>8B2BAEAA96464F418E570A09</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>655EE3E4EDA348129A9C6782</key>
+		<key>A0BBCDC6D94A4736A5EEBC8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9FFCD7B34C684931B1F5B44A</key>
+		<key>D5D2DD25CA094D8FA31DD889</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0D162339C0F49FCA08E75BC</key>
+		<key>D717B40EC01E424AB177887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE8A7D0EE3314433896466BF</key>
+		<key>E573F7E959854A62A83A18E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E8E90BBF41A646C78DA35787</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EFDA7674F32A487697E58EA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F33B67447C804F5AA31E5C61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA1643541A17403CBAB1C207</key>
 		<dict>
 			<key>primary</key>
 			<true/>

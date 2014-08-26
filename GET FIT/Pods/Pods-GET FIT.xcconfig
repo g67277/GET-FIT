@@ -1,7 +1,8 @@
 CLANG_CXX_LANGUAGE_STANDARD = c++0x
 CLANG_CXX_LIBRARY = libc++
+CLANG_MODULES_AUTOLINK = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/BButton" "${PODS_ROOT}/Headers/Cedar" "${PODS_ROOT}/Headers/FrameAccessor" "${PODS_ROOT}/Headers/GraphKit" "${PODS_ROOT}/Headers/MKFoundationKit" "${PODS_ROOT}/Headers/OCBorghettiView" "${PODS_ROOT}/Headers/Swizzlean"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/BButton" -isystem "${PODS_ROOT}/Headers/Cedar" -isystem "${PODS_ROOT}/Headers/FrameAccessor" -isystem "${PODS_ROOT}/Headers/GraphKit" -isystem "${PODS_ROOT}/Headers/MKFoundationKit" -isystem "${PODS_ROOT}/Headers/OCBorghettiView" -isystem "${PODS_ROOT}/Headers/Swizzlean"
-OTHER_LDFLAGS = -ObjC -lc++ -framework CoreGraphics
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AMSmoothAlert" "${PODS_ROOT}/Headers/BButton" "${PODS_ROOT}/Headers/Cedar" "${PODS_ROOT}/Headers/FrameAccessor" "${PODS_ROOT}/Headers/GPUImage" "${PODS_ROOT}/Headers/GraphKit" "${PODS_ROOT}/Headers/MKFoundationKit" "${PODS_ROOT}/Headers/NZAlertView" "${PODS_ROOT}/Headers/OCBorghettiView" "${PODS_ROOT}/Headers/Swizzlean" "${PODS_ROOT}/Headers/UIImage-Helpers"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AMSmoothAlert" -isystem "${PODS_ROOT}/Headers/BButton" -isystem "${PODS_ROOT}/Headers/Cedar" -isystem "${PODS_ROOT}/Headers/FrameAccessor" -isystem "${PODS_ROOT}/Headers/GPUImage" -isystem "${PODS_ROOT}/Headers/GraphKit" -isystem "${PODS_ROOT}/Headers/MKFoundationKit" -isystem "${PODS_ROOT}/Headers/NZAlertView" -isystem "${PODS_ROOT}/Headers/OCBorghettiView" -isystem "${PODS_ROOT}/Headers/Swizzlean" -isystem "${PODS_ROOT}/Headers/UIImage-Helpers"
+OTHER_LDFLAGS = -ObjC -lc++ -framework AVFoundation -framework Accelerate -framework CoreGraphics -framework CoreMedia -framework Foundation -framework OpenGLES -framework QuartzCore -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods

@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1.0f];
 	
     /*
      * Smooth scrolling in vertical direction
@@ -113,13 +115,58 @@
     NSLog(@"%f", compinedMinutesForDate);
     NSLog(@"%@", measurements);
     
-    NSString* minOfWorkout = [NSString stringWithFormat:@"%f", compinedMinutesForDate];
+    NSString* minOfWorkout = [NSString stringWithFormat:@"%2f", compinedMinutesForDate];
+    
+    if (!alert || !alert.isDisplayed) {
+        // Custom colored alert of type AlertInfo, custom colors can be applied to any alert type
+        alert = [[AMSmoothAlertView alloc]initDropAlertWithTitle:minOfWorkout andText:measurements andCancelButton:NO forAlertType:AlertInfo andColor:[UIColor colorWithRed:250/255.0f green:186/255.0f blue:45/255.0f alpha:1.0f]];
+        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:25.0f]];
+        
+        alert.cornerRadius = 3.0f;
+        [alert show];
+    }else{
+        [alert dismissAlertView];
+    }
+
+    
+    
+    
     // this works for displaying data
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:minOfWorkout message:measurements delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+    //UIAlertView* alert = [[UIAlertView alloc]initWithTitle:minOfWorkout message:measurements delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
     [alert show];
 
     NSLog(@"Date Selected : %02i/%02i/%04i",day,month,year);
 }
+
+#pragma mark - Delegates
+- (void)alertView:(AMSmoothAlertView *)alertView didDismissWithButton:(UIButton *)button {
+	if (alertView == alert) {
+		if (button == alert.defaultButton) {
+			NSLog(@"Default button touched!");
+		}
+		if (button == alert.cancelButton) {
+			NSLog(@"Cancel button touched!");
+		}
+	}
+}
+
+- (void)alertViewWillShow:(AMSmoothAlertView *)alertView {
+    if (alertView.tag == 0)
+        NSLog(@"AlertView Will Show: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewDidShow:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Did Show: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewWillDismiss:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Will Dismiss: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewDidDismiss:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Did Dismiss: '%@'", alertView.titleLabel.text);
+}
+
 
 /**
  *  Delegate method : get called user has scroll to a new month

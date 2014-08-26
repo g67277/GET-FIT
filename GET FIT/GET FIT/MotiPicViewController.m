@@ -46,11 +46,24 @@
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:nil];
     }else if (sender.tag == 1){
-        //start merge
-        mergEffectView.hidden = false;
-        camButton.hidden = true;
-        //mergEffectView.alpha = .95;
-        [self animateImages];
+        if (camPicArray.count < 5) {
+            if (!alert || !alert.isDisplayed) {
+                alert = [[AMSmoothAlertView alloc]initFadeAlertWithTitle:@"Sorry!" andText:@"This feature is only avialable after 5 pictures have been added" andCancelButton:NO forAlertType:AlertFailure];
+                [alert.defaultButton setTitle:@"Ok" forState:UIControlStateNormal];
+                
+                [alert show];
+            }else{
+                [alert dismissAlertView];
+            }
+            
+        }else{
+            //start merge
+            mergEffectView.hidden = false;
+            camButton.hidden = true;
+            //mergEffectView.alpha = .95;
+            [self animateImages];
+        }
+        
     }else if (sender.tag == 2){
         // repeat
         [self animateImages]; // once finished, repeat again
@@ -222,6 +235,35 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Testing\nTesting2\n%@", camDateArray[indexPath.row]];
     
     return cell;
+}
+
+#pragma mark - Delegates
+- (void)alertView:(AMSmoothAlertView *)alertView didDismissWithButton:(UIButton *)button {
+	if (alertView == alert) {
+		if (button == alert.defaultButton) {
+			NSLog(@"Default button touched!");
+		}
+		if (button == alert.cancelButton) {
+			NSLog(@"Cancel button touched!");
+		}
+	}
+}
+
+- (void)alertViewWillShow:(AMSmoothAlertView *)alertView {
+    if (alertView.tag == 0)
+        NSLog(@"AlertView Will Show: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewDidShow:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Did Show: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewWillDismiss:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Will Dismiss: '%@'", alertView.titleLabel.text);
+}
+
+- (void)alertViewDidDismiss:(AMSmoothAlertView *)alertView {
+	NSLog(@"AlertView Did Dismiss: '%@'", alertView.titleLabel.text);
 }
 
 

@@ -6,6 +6,12 @@
 // project.
 
 
+// AMSmoothAlert
+#define COCOAPODS_POD_AVAILABLE_AMSmoothAlert
+#define COCOAPODS_VERSION_MAJOR_AMSmoothAlert 1
+#define COCOAPODS_VERSION_MINOR_AMSmoothAlert 1
+#define COCOAPODS_VERSION_PATCH_AMSmoothAlert 0
+
 // BButton
 #define COCOAPODS_POD_AVAILABLE_BButton
 #define COCOAPODS_VERSION_MAJOR_BButton 4
@@ -24,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_FrameAccessor 3
 #define COCOAPODS_VERSION_PATCH_FrameAccessor 2
 
+// GPUImage
+#define COCOAPODS_POD_AVAILABLE_GPUImage
+#define COCOAPODS_VERSION_MAJOR_GPUImage 0
+#define COCOAPODS_VERSION_MINOR_GPUImage 1
+#define COCOAPODS_VERSION_PATCH_GPUImage 5
+
 // GraphKit
 #define COCOAPODS_POD_AVAILABLE_GraphKit
 #define COCOAPODS_VERSION_MAJOR_GraphKit 1
@@ -36,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_MKFoundationKit_NSArray 2
 #define COCOAPODS_VERSION_PATCH_MKFoundationKit_NSArray 2
 
+// NZAlertView
+#define COCOAPODS_POD_AVAILABLE_NZAlertView
+#define COCOAPODS_VERSION_MAJOR_NZAlertView 0
+#define COCOAPODS_VERSION_MINOR_NZAlertView 0
+#define COCOAPODS_VERSION_PATCH_NZAlertView 11
+
 // OCBorghettiView
 #define COCOAPODS_POD_AVAILABLE_OCBorghettiView
 #define COCOAPODS_VERSION_MAJOR_OCBorghettiView 0
@@ -47,4 +65,10 @@
 #define COCOAPODS_VERSION_MAJOR_Swizzlean 0
 #define COCOAPODS_VERSION_MINOR_Swizzlean 1
 #define COCOAPODS_VERSION_PATCH_Swizzlean 2
+
+// UIImage-Helpers
+#define COCOAPODS_POD_AVAILABLE_UIImage_Helpers
+#define COCOAPODS_VERSION_MAJOR_UIImage_Helpers 0
+#define COCOAPODS_VERSION_MINOR_UIImage_Helpers 0
+#define COCOAPODS_VERSION_PATCH_UIImage_Helpers 2
 

@@ -14,11 +14,15 @@
 @interface TrackingViewController : UIViewController<GKLineGraphDataSource>{
     IBOutlet UISegmentedControl* chartType;
     
+    IBOutlet UISegmentedControl* monthFormat;
+    
     UIImage *capturedScreen;
     
     NSManagedObject* matches;
     NSMutableArray* weightArray;
     NSMutableArray* sizeArray;
+    
+    int chartFormat;
     
     //TESTING*******************************
     
@@ -28,10 +32,6 @@
 
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSArray *labels;
-
-//testing to be deleted------------
-@property (nonatomic, strong) IBOutlet UITextView *mainEvents;
-//----------------
 
 @property (nonatomic, retain) IBOutlet UIView *longPressView;
 

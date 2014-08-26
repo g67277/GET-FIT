@@ -18,20 +18,10 @@
 
 - (void)viewDidLoad
 {
-    
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]) {
-        NSLog(@"user default for units 1 %hhd", [[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]);
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"test" message:@"1" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-        [alert show];
-    } else {
-        NSLog(@"user default for units 2 %hhd", [[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]);
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"test" message:@"2" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
 
 - (IBAction)onClick:(id)sender{
     
@@ -50,7 +40,17 @@
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSManagedObject* newTrack = [NSEntityDescription insertNewObjectForEntityForName:@"WeightNWeistSize" inManagedObjectContext:context];
     
+    NSString* weightInput = weightField.text;
+    NSString* sizeInput = sizeField.text;
     
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]) {
+        
+        if (weightField.text.length > 0) {
+            weightInput = [NSString stringWithFormat:@"%@", [self convertToLbs:weightField.text]];
+        }if (sizeField.text.length > 0) {
+            sizeInput = [NSString stringWithFormat:@"%@", [self convertToInches:sizeField.text]];
+        }
+    }
     
     int weightCount = weightField.text.length;
     int sizeCount = sizeField.text.length;
@@ -64,18 +64,18 @@
     }else{
         if (weightCount > 0 && sizeCount > 0) {
             
-            [newTrack setValue:weightField.text forKey:@"weight"];
-            [newTrack setValue:sizeField.text forKey:@"weistSize"];
+            [newTrack setValue:weightInput forKey:@"weight"];
+            [newTrack setValue:sizeInput forKey:@"weistSize"];
             [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-            NSLog(@"Both Saved: %@ || %@", weightField.text, sizeField.text);
+            NSLog(@"Both Saved: %@ || %@", weightInput, sizeInput);
         }else if (weightCount > 0){
-            [newTrack setValue:weightField.text forKey:@"weight"];
+            [newTrack setValue:weightInput forKey:@"weight"];
             [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-            NSLog(@"only weight Saved: %@", weightField.text);
+            NSLog(@"only weight Saved: %@", weightInput);
         }else if (sizeCount > 0){
-            [newTrack setValue:sizeField.text forKey:@"weistSize"];
+            [newTrack setValue:sizeInput forKey:@"weistSize"];
             [newTrack setValue:dateOfEntry forKey:@"entryDate"];
-            NSLog(@"only size Saved: %@", sizeField.text);
+            NSLog(@"only size Saved: %@", sizeInput);
         }
         
         NSError* error;
@@ -85,6 +85,24 @@
     
     
     
+}
+
+- (NSString*) convertToLbs:(NSString*) weight{
+    
+    int weightInInt = [weight intValue] * 2.2046 ;
+    
+    NSString* returnText = [NSString stringWithFormat:@"%d", weightInInt];
+    
+    return returnText;
+}
+
+- (NSString*) convertToInches:(NSString*) size{
+    
+    int sizeInInt = [size intValue] * 0.39370;
+    
+    NSString* returnText = [NSString stringWithFormat:@"%d", sizeInInt];
+    
+    return returnText;
 }
 
 //---------- Hiding Keyboard when touching anything but the field----------------------

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9FFCD7B34C684931B1F5B44A"
+               BlueprintIdentifier = "E573F7E959854A62A83A18E0"
                BuildableName = "libPods-GET FIT-OCBorghettiView.a"
                BlueprintName = "Pods-GET FIT-OCBorghettiView"
                ReferencedContainer = "container:Pods.xcodeproj">

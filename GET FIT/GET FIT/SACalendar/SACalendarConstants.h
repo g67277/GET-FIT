@@ -38,11 +38,11 @@
 // There are 3 layers view in SACalendar, the default UIView, the scroll view, and the collection view.
 // Change their colors here
 
-#define viewBackgroundColor [UIColor blackColor]
-#define scrollViewBackgroundColor [UIColor whiteColor]
-#define calendarBackgroundColor [UIColor whiteColor]
+#define viewBackgroundColor [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1.0f]
+#define scrollViewBackgroundColor [UIColor clearColor]
+#define calendarBackgroundColor [UIColor clearColor]
 
-#define headerTextColor [UIColor redColor]
+#define headerTextColor [UIColor whiteColor]
 
 /**
  *  Cell's property
@@ -52,14 +52,14 @@
 #define cellFont [UIFont systemFontOfSize:desiredFontSize * cellFontRatio]
 #define cellBoldFont [UIFont boldSystemFontOfSize:desiredFontSize * cellFontRatio]
 
-#define cellBackgroundColor [UIColor whiteColor]
-#define cellTopLineColor [UIColor lightGrayColor]
+#define cellBackgroundColor [UIColor clearColor]
+#define cellTopLineColor [UIColor clearColor]
 
-#define dateTextColor [UIColor blackColor]
+#define dateTextColor [UIColor whiteColor]
 
 // Current date's cell
-#define currentDateCircleColor [UIColor redColor]
-#define currentDateTextColor [UIColor whiteColor]
+#define currentDateCircleColor [UIColor whiteColor]
+#define currentDateTextColor [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1.0f]
 
 // Selected date's cell
 #define selectedDateCircleColor [UIColor blackColor]

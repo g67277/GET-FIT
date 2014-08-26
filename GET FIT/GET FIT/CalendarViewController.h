@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
+#import "AMSmoothAlertView.h"
+#import "AMSmoothAlertConstants.h"
 
-@interface CalendarViewController : UIViewController{
+@interface CalendarViewController : UIViewController<AMSmoothAlertViewDelegate>{
     
     IBOutlet UIButton* panelButton;
+    AMSmoothAlertView * alert;
+    bool isPopupShown;
     
 }
 

@@ -10,6 +10,8 @@ pod 'MKFoundationKit/NSArray', '~> 1.2.2'
 pod 'Cedar', '~> 0.9.5'
 pod 'Swizzlean', '~> 0.1.1'
 pod 'OCBorghettiView', '~> 0.0'
+pod 'AMSmoothAlert', '~> 1.1'
+pod 'NZAlertView', '~> 0.0'
 
 end
 

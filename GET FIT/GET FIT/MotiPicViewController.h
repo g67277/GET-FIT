@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
+#import "AMSmoothAlertView.h"
+#import "AMSmoothAlertConstants.h"
 
-@interface MotiPicViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface MotiPicViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AMSmoothAlertViewDelegate>{
     
     IBOutlet UITableView* motiTable;
     IBOutlet UIButton* camButton;
@@ -25,6 +27,9 @@
     NSManagedObject* matches;
     NSMutableArray* weightArray;
     NSMutableArray* sizeArray;
+    
+    AMSmoothAlertView * alert;
+    bool isPopupShown;
     
 }
 

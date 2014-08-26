@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "655EE3E4EDA348129A9C6782"
+               BlueprintIdentifier = "0F286F75EB4E4FC9940DA377"
                BuildableName = "libPods-GET FIT-BButton.a"
                BlueprintName = "Pods-GET FIT-BButton"
                ReferencedContainer = "container:Pods.xcodeproj">

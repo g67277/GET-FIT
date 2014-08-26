@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE8A7D0EE3314433896466BF"
+               BlueprintIdentifier = "D5D2DD25CA094D8FA31DD889"
                BuildableName = "libPods-GET FIT-Swizzlean.a"
                BlueprintName = "Pods-GET FIT-Swizzlean"
                ReferencedContainer = "container:Pods.xcodeproj">

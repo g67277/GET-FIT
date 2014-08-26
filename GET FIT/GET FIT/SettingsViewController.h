@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "RESideMenu.h"
 #import "OCBorghettiView.h"
+#import "NZAlertViewDelegate.h"
 
 
-@interface SettingsViewController : UIViewController<OCBorghettiViewDelegate, UITableViewDelegate, UITableViewDataSource>{
+@interface SettingsViewController : UIViewController<OCBorghettiViewDelegate, UITableViewDelegate, UITableViewDataSource, NZAlertViewDelegate>{
     
     NSArray* reminderOptions;
     NSArray* restOptions;
@@ -21,6 +23,7 @@
     IBOutlet UIButton* menuButton;
     
     UILocalNotification *localNotification;
+    NZAlertView *alert;
         
 }
 
