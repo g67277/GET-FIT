@@ -25,11 +25,19 @@
     UILongPressGestureRecognizer *longPress;
 }
 
+
 - (void) viewWillAppear:(BOOL)animated{
     [self retriveCoreData];
     // THis is to change the chart input
 
-    [self _setupWeightGraph];
+    if (isData) {
+        if (chartTypeSelected == 0) {
+            [self _setupWeightGraph];
+        }else{
+            [self _setupWeistSizeGraph];
+        }
+    }
+    
 
 }
 
@@ -62,16 +70,17 @@
 
     
 
-    self.labels = @[@"", @"1-5", @"6-10", @"11-15", @"16-20", @"21-25", @"26-31"];
+    self.labels = @[@"1-5", @"6-9", @"10-14", @"15-18", @"19-23", @"24-27", @"28-31"];
     chartFormat = 0;
+    chartTypeSelected = 0;
 
 }
 
 - (void) retriveCoreData{
     
     // Core data items -------------------------------------------------
-    weightArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, nil];
-    sizeArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, nil];
+    weightArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, @0, nil];
+    sizeArray = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, @0, @0, @0, nil];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -133,9 +142,11 @@
         if (chartType.selectedSegmentIndex == 0) {
             [self.graph reset];
             [self _setupWeightGraph];
+            chartTypeSelected = 0;
         }else {
             [self.graph reset];
             [self _setupWeistSizeGraph];
+            chartTypeSelected = 1;
         }
 
     }
@@ -155,25 +166,25 @@
 - (void) chartMonthFormat:(int) num{
     
     switch (num) {
+        
         case 0:
-            self.labels = @[@"", @"1-5", @"6-10", @"11-15", @"16-20", @"21-25", @"26-31"];
+            self.labels = @[@"1-5", @"6-9", @"10-14", @"15-18", @"19-23", @"24-27", @"28-31"];
             chartFormat = 0;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
             break;
         case 1:
-            self.labels = @[@"", @"1-15", @"16-31", @"1-15", @"16-31", @"1-15", @"16-31"];
+            self.labels = @[@"1-8", @"9-16", @"17-24", @"25-31", @"32-42", @"43-51", @"52-60"];
             chartFormat = 1;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
             break;
         case 2:
-            self.labels = @[@"", @"1", @"2", @"3", @"4", @"5", @"6"];
+            self.labels = @[@"1-10", @"11-20", @"21-31", @"32-46", @"47-60", @"61-75", @"76-90"];
             chartFormat = 2;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
             break;
-            
         default:
             break;
     }
@@ -245,9 +256,9 @@
 
 - (void)_setupWeightGraph {
     
-
+    
     self.data = @[
-                  @[@100, weightArray[0], weightArray[1], weightArray[2], weightArray[3], weightArray[4], weightArray[5]],
+                  @[weightArray[0], weightArray[1], weightArray[2], weightArray[3], weightArray[4], weightArray[5], weightArray[6]],
                   //@[@40, @20, @60, @100, @60, @20, @60],
                   //@[@80, @60, @40, @160, @100, @40, @110],
                   //@[@120, @150, @80, @120, @140, @100, @0],
@@ -278,7 +289,7 @@
      */
     
     self.data = @[
-                  @[@30, sizeArray[0], sizeArray[1], sizeArray[2], sizeArray[3], sizeArray[4], sizeArray[5]],
+                  @[sizeArray[0], sizeArray[1], sizeArray[2], sizeArray[3], sizeArray[4], sizeArray[5], sizeArray[6]],
                   //@[@40, @20, @60, @100, @60, @20, @60],
                   //@[@80, @60, @40, @160, @100, @40, @110],
                   //@[@120, @150, @80, @120, @140, @100, @0],
@@ -296,6 +307,8 @@
     //    self.graph.startFromZero = YES;
     self.graph.valueLabelCount = 6;
     
+    [self.graph draw];
+    [self.graph reset];
     [self.graph draw];
 }
 
@@ -361,197 +374,755 @@
     
     if ([objects count] == 0) {
         NSLog(@"No matches");
+        isData = NO;
         // put an alert here
     }else{
+        isData = YES;
         for (int i = 0; i < [objects count]; i++) {
             matches = objects[i];
             
-            NSString *dateCompareString = [[matches valueForKey:@"entryDate"] substringToIndex:[[matches valueForKey:@"entryDate"] length]-9];
-            int dateCompare = [dateCompareString intValue];
+            NSString *dateDayCompareString = [[matches valueForKey:@"entryDate"] substringToIndex:[[matches valueForKey:@"entryDate"] length]-9];
+            NSString *monthNday = [[matches valueForKey:@"entryDate"] substringToIndex:[[matches valueForKey:@"entryDate"] length]-6];
+            NSString *dateMonthCompareString = [monthNday substringFromIndex:4];
+            
+            int dateCompare = [dateDayCompareString intValue];
+            int monthCompare = [dateMonthCompareString intValue];
             
             if([[NSUserDefaults standardUserDefaults] boolForKey:@"unitType"]){
-                if (dateCompare > 0 && dateCompare < 6 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        weightArray[0] = myNumber;
+                
+                if (chartFormat == 0) {
+                    if (dateCompare > 0 && dateCompare <= 5 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[0] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[0] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 6 && dateCompare <= 9 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[1] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[1] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 10 && dateCompare <= 14 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[2] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[2] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 15 && dateCompare <= 18 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[3] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[3] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 19 && dateCompare <= 23 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                        }
+                        
+                    }else if (dateCompare >= 24 && dateCompare <= 27 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[5] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[5] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 28 && dateCompare <= 31 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            myNumber = [self convertToKg:myNumber];
+                            weightArray[6] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            myNumber = [self converToCm:myNumber];
+                            sizeArray[6] = myNumber;
+                        }
+                        
                     }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        sizeArray[0] = myNumber;
+
+                }
+                if (chartFormat == 1) {
+                    
+                    int initialMonth;
+                    
+                    if (i == 0) {
+                        initialMonth = monthCompare;
                     }
                     
-                }else if (dateCompare > 5 && dateCompare < 11 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        weightArray[1] = myNumber;
+                    if (monthCompare == initialMonth) {
+                        
+                        if (dateCompare > 0 && dateCompare < 9 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[0] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[0] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 8 && dateCompare < 17 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[1] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[1] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 16 && dateCompare < 25 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[2] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[2] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 24 && dateCompare < 32 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[3] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[3] = myNumber;
+                            }
+                            
+                        }
+                        
+                        
+                    }else if (monthCompare == initialMonth + 1){
+                        
+                        dateCompare = dateCompare + 30;
+
+                        
+                        if (dateCompare > 31 && dateCompare < 43 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            
+                        }else if (dateCompare >= 43 && dateCompare <= 51 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[5] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[5] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 52 && dateCompare <= 60 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[6] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[6] = myNumber;
+                            }
+                            
+                        }
+                        
                     }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        sizeArray[1] = myNumber;
+                }
+                
+                if (chartFormat == 2) {
+                    
+                    int initialMonth;
+                    
+                    if (i == 0) {
+                        initialMonth = monthCompare;
                     }
                     
-                }else if (dateCompare > 10 && dateCompare < 16 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        weightArray[2] = myNumber;
+                    if (monthCompare == initialMonth) {
+                        
+                        if (dateCompare > 0 && dateCompare <= 10 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[0] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[0] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 11 && dateCompare <= 20 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[1] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[1] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 21 && dateCompare <= 31 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[2] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[2] = myNumber;
+                            }
+                            
+                        }
+                        
+                    }else if (monthCompare == initialMonth + 1){
+                        
+                        dateCompare = dateCompare + 30;
+
+                        
+                        if (dateCompare >= 32 && dateCompare <= 46 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[3] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[3] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 47 && dateCompare <= 60 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            
+                        }
+                    }else if (monthCompare == initialMonth + 2){
+                        
+                        dateCompare = dateCompare + 60;
+                        
+                        if (dateCompare >= 61 && dateCompare <= 75 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[5] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[5] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 75 && dateCompare <= 90 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                myNumber = [self convertToKg:myNumber];
+                                weightArray[6] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                myNumber = [self converToCm:myNumber];
+                                sizeArray[6] = myNumber;
+                            }
+                        }
                     }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        sizeArray[2] = myNumber;
-                    }
-                    
-                }else if (dateCompare > 15 && dateCompare < 21 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        weightArray[3] = myNumber;
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        sizeArray[3] = myNumber;
-                    }
-                    
-                }else if (dateCompare > 20 && dateCompare < 26 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        [weightArray replaceObjectAtIndex:4 withObject:myNumber];
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
-                    }
-                    
-                }else if (dateCompare > 25 && dateCompare < 32 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        myNumber = [self convertToKg:myNumber];
-                        weightArray[5] = myNumber;
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        myNumber = [self converToCm:myNumber];
-                        sizeArray[5] = myNumber;
+                }
+
+            }else{
+                if (chartFormat == 0) {
+                    if (dateCompare > 0 && dateCompare <= 5 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[0] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[0] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 6 && dateCompare <= 9 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[1] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[1] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 10 && dateCompare <= 14 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[2] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[2] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 15 && dateCompare <= 18 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[3] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[3] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 19 && dateCompare <= 23 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                        }
+                        
+                    }else if (dateCompare >= 24 && dateCompare <= 27 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[5] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[5] = myNumber;
+                        }
+                        
+                    }else if (dateCompare >= 28 && dateCompare <= 31 ) {
+                        if ([matches valueForKey:@"weight"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                            weightArray[6] = myNumber;
+                        }
+                        if ([matches valueForKey:@"weistSize"] == nil) {
+                            NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                        }else{
+                            myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                            sizeArray[6] = myNumber;
+                        }
+                        
                     }
                     
                 }
-            }else{
-                if (dateCompare > 0 && dateCompare < 6 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        weightArray[0] = myNumber;
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        sizeArray[0] = myNumber;
+                if (chartFormat == 1) {
+                    
+                    int initialMonth;
+                    
+                    if (i == 0) {
+                        initialMonth = monthCompare;
                     }
                     
-                }else if (dateCompare > 5 && dateCompare < 11 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        weightArray[1] = myNumber;
+                    if (monthCompare == initialMonth) {
+                        
+                        if (dateCompare > 0 && dateCompare < 9 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[0] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[0] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 8 && dateCompare < 17 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[1] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[1] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 16 && dateCompare < 25 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[2] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[2] = myNumber;
+                            }
+                            
+                        }else if (dateCompare > 24 && dateCompare < 32 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[3] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[3] = myNumber;
+                            }
+                            
+                        }
+                        
+                        
+                    }else if (monthCompare == initialMonth + 1){
+                        
+                        dateCompare = dateCompare + 30;
+                        
+                        
+                        if (dateCompare > 31 && dateCompare < 43 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            
+                        }else if (dateCompare >= 43 && dateCompare <= 51 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[5] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[5] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 52 && dateCompare <= 60 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[6] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[6] = myNumber;
+                            }
+                            
+                        }
+                        
                     }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        sizeArray[1] = myNumber;
+                }
+                
+                if (chartFormat == 2) {
+                    
+                    int initialMonth;
+                    
+                    if (i == 0) {
+                        initialMonth = monthCompare;
                     }
                     
-                }else if (dateCompare > 10 && dateCompare < 16 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        weightArray[2] = myNumber;
+                    if (monthCompare == initialMonth) {
+                        
+                        if (dateCompare > 0 && dateCompare <= 10 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[0] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[0] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 11 && dateCompare <= 20 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[1] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[1] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 21 && dateCompare <= 31 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[2] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[2] = myNumber;
+                            }
+                            
+                        }
+                        
+                    }else if (monthCompare == initialMonth + 1){
+                        
+                        dateCompare = dateCompare + 30;
+                        
+                        
+                        if (dateCompare >= 32 && dateCompare <= 46 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[3] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[3] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 47 && dateCompare <= 60 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                [weightArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
+                            }
+                            
+                        }
+                    }else if (monthCompare == initialMonth + 2){
+                        
+                        dateCompare = dateCompare + 60;
+                        
+                        if (dateCompare >= 61 && dateCompare <= 75 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[5] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[5] = myNumber;
+                            }
+                            
+                        }else if (dateCompare >= 75 && dateCompare <= 90 ) {
+                            if ([matches valueForKey:@"weight"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
+                                weightArray[6] = myNumber;
+                            }
+                            if ([matches valueForKey:@"weistSize"] == nil) {
+                                NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
+                            }else{
+                                myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
+                                sizeArray[6] = myNumber;
+                            }
+                        }
                     }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        sizeArray[2] = myNumber;
-                    }
-                    
-                }else if (dateCompare > 15 && dateCompare < 21 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        weightArray[3] = myNumber;
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        sizeArray[3] = myNumber;
-                    }
-                    
-                }else if (dateCompare > 20 && dateCompare < 26 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        [weightArray replaceObjectAtIndex:4 withObject:myNumber];
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        [sizeArray replaceObjectAtIndex:4 withObject:myNumber];
-                    }
-                    
-                }else if (dateCompare > 25 && dateCompare < 32 ) {
-                    if ([matches valueForKey:@"weight"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weight"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weight"]];
-                        weightArray[5] = myNumber;
-                    }
-                    if ([matches valueForKey:@"weistSize"] == nil) {
-                        NSLog(@"Failed because: %@", [matches valueForKey:@"weistSize"]);
-                    }else{
-                        myNumber = [f numberFromString:[matches valueForKey:@"weistSize"]];
-                        sizeArray[5] = myNumber;
-                    }
-                    
                 }
             }
             

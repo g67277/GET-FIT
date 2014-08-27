@@ -22,7 +22,10 @@
     NSMutableArray* weightArray;
     NSMutableArray* sizeArray;
     
+    
     int chartFormat;
+    int chartTypeSelected;
+    BOOL isData;
     
     //TESTING*******************************
     

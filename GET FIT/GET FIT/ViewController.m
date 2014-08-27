@@ -74,7 +74,7 @@
         [self workoutFilter:@"lower"];
         TargetedListViewController* listView = segue.destinationViewController;
         listView.targetedArray = targetedWorkoutArray;
-    }else if ([segue.identifier isEqual: @"toSides"]){
+    }else if ([segue.identifier isEqual: @"toSide1"] || [segue.identifier isEqual:@"toSide2"]){
         [self workoutFilter:@"sides"];
         TargetedListViewController* listView = segue.destinationViewController;
         listView.targetedArray = targetedWorkoutArray;

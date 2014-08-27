@@ -32,6 +32,7 @@
     [self.view bringSubviewToFront:camButton];
     camPicArray = [[NSMutableArray alloc]init];
     camDateArray = [[NSMutableArray alloc] init];
+    detailsArray = [[NSMutableArray alloc] init];
     
 	// Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES];
@@ -41,10 +42,10 @@
 - (IBAction)onClick:(UIButton*)sender{
 
     if (sender.tag == 0) {
-        picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:picker animated:YES completion:nil];
+        imgPicker = [[UIImagePickerController alloc] init];
+        imgPicker.delegate = self;
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imgPicker animated:YES completion:nil];
     }else if (sender.tag == 1){
         if (camPicArray.count < 5) {
             if (!alert || !alert.isDisplayed) {
@@ -157,6 +158,21 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request
                                               error:&error];
+    
+    AppDelegate *appDelegate2 = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context2 = [appDelegate2 managedObjectContext];
+    // We want the contact entity, (this is where you can select the entity if there are more than one)
+    NSEntityDescription* entityDesc2 = [NSEntityDescription entityForName:@"WeightNWeistSize" inManagedObjectContext:context2];
+    // initialzing a fetch request
+    NSFetchRequest *request2 = [[NSFetchRequest alloc] init];
+    // passing in the entity
+    [request2 setEntity:entityDesc2];
+    [request2 setPropertiesToFetch:@[@"weight"]];
+    NSManagedObject* matches2 = nil;
+    
+    NSError *error2;
+    NSArray *objects2 = [context2 executeFetchRequest:request2
+                                              error:&error2];
     //NSMutableArray* testing2 = [[NSMutableArray alloc] init];
     
     if ([objects count] == 0) {
@@ -169,10 +185,31 @@
             PicEntity* nameImg = matches;
             NSString* incomingImg = nameImg.image;
             NSString* incomingDate = nameImg.date;
+            NSString* measurements = @"No details available for this picture!";
+            NSUInteger test = [objects2 count];
+            if (test > i) {
+                matches2 = objects2[i];
+                NSString* detailsIncomingDate = [matches2 valueForKey:@"entryDate"];
+                NSString* weight = [matches2 valueForKey:@"weight"];
+                NSString* size = [matches2 valueForKey:@"weistSize"];
+                if ([detailsIncomingDate  isEqualToString: incomingDate]) {
+                    
+                    if ([size length] == 0) {
+                        measurements = [NSString stringWithFormat:@"Waist was:\n%@",[matches2 valueForKey:@"weistSize"]];
+                    }else if ([weight length] == 0){
+                        measurements = [NSString stringWithFormat:@"Weight was:\n%@", [matches2 valueForKey:@"weight"]];
+                    }else{
+                        measurements = [NSString stringWithFormat:@"Weight was:\n%@\n \nWaist was:\n%@", [matches2 valueForKey:@"weight"], [matches2 valueForKey:@"weistSize"]];
+                    }
+                }
+            }
+            
+            
             NSData *imgData = [NSData dataWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:incomingImg]];
             UIImage* imgToAdd = [UIImage imageWithData:imgData];
             [camPicArray addObject:imgToAdd];
             [camDateArray addObject:incomingDate];
+            [detailsArray addObject:measurements];
         }
     }
     
@@ -207,7 +244,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
-    [picker.view setFrame:picker.view.superview.frame];
+    [imgPicker.view setFrame:imgPicker.view.superview.frame];
 }
 
 - (void) image: (UIImage*) image didFinishSavingWithError: (NSError*) error contextInfo: (void *) contextInfo{
@@ -228,11 +265,14 @@
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    cell.textLabel.text = detailsArray[indexPath.row];
+    UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 20.0 ];
+    cell.textLabel.font  = myFont;
+    cell.textLabel.numberOfLines = 5;
     cell.imageView.image = camPicArray[indexPath.row];
     //cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
-    cell.detailTextLabel.numberOfLines = 3;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Testing\nTesting2\n%@", camDateArray[indexPath.row]];
+    cell.detailTextLabel.numberOfLines = 2;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"\n%@", camDateArray[indexPath.row]];
     
     return cell;
 }

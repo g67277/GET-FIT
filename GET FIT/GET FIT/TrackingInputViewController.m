@@ -52,8 +52,8 @@
         }
     }
     
-    int weightCount = weightField.text.length;
-    int sizeCount = sizeField.text.length;
+    int weightCount = (int)weightField.text.length;
+    int sizeCount = (int)sizeField.text.length;
     
     //NSUserDefaults* unitDefault = [NSUserDefaults standardUserDefaults];
     

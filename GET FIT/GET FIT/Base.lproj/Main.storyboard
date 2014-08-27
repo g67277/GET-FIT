@@ -87,7 +87,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="XvB-dL-Bo4" kind="push" identifier="toSides" id="R4Q-1l-be7"/>
+                                                    <segue destination="XvB-dL-Bo4" kind="push" identifier="toSide1" id="R4Q-1l-be7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPV-1d-L5p" userLabel="sides">
@@ -97,7 +97,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="XvB-dL-Bo4" kind="push" identifier="toSides" id="pAy-nW-tcC"/>
+                                                    <segue destination="XvB-dL-Bo4" kind="push" identifier="toSide2" id="pAy-nW-tcC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -560,8 +560,8 @@
                                     <segment title="1m">
                                         <size key="contentOffset" width="5" height="0.0"/>
                                     </segment>
-                                    <segment title="3m"/>
-                                    <segment title="6m">
+                                    <segment title="2m"/>
+                                    <segment title="3m">
                                         <size key="contentOffset" width="-6" height="0.0"/>
                                     </segment>
                                 </segments>

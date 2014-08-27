@@ -131,8 +131,7 @@
     
     
     
-    // this works for displaying data
-    //UIAlertView* alert = [[UIAlertView alloc]initWithTitle:minOfWorkout message:measurements delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+    
     [alert show];
 
     NSLog(@"Date Selected : %02i/%02i/%04i",day,month,year);

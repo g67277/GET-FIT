@@ -318,7 +318,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
-    
+
     [self NZAlertViewDidDismiss:alert];
 }
 

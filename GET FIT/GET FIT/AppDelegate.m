@@ -19,7 +19,7 @@
     if ([userDefaults objectForKey:@"restingTime"] != nil){
         
     }
-    if ([userDefaults boolForKey:@"unitType"] != nil){
+    if ([userDefaults boolForKey:@"unitType"]){
     
     }
     

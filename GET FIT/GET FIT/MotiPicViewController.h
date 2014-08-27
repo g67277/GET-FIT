@@ -19,7 +19,7 @@
     IBOutlet UIView* mergEffectView;
     IBOutlet UIImageView* mergeAnimation;
     
-    UIImagePickerController *picker;
+    UIImagePickerController *imgPicker;
     NSMutableArray* camPicArray;
     NSMutableArray* camDateArray;
     
@@ -27,9 +27,11 @@
     NSManagedObject* matches;
     NSMutableArray* weightArray;
     NSMutableArray* sizeArray;
+    NSMutableArray* detailsArray;
     
     AMSmoothAlertView * alert;
     bool isPopupShown;
+    
     
 }
 

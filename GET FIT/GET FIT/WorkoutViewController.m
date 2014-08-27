@@ -148,7 +148,7 @@
     dynamicWorkCount = 10;
     if (targetedArrayWorkout != nil) {
         if ([targetedArrayWorkout count] < 10) {
-            dynamicWorkCount = [targetedArrayWorkout count];
+            dynamicWorkCount = (int)[targetedArrayWorkout count];
         }
     }
     
