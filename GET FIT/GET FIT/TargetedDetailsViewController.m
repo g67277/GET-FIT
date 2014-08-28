@@ -50,8 +50,13 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     
-    NSLog(@"%@", self.currentCell.title);
     dTitle.text = self.currentCell.title;
+    dTitle.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:20];
+    
+    self.navigationItem.title = self.currentCell.title;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:25]}];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
     
 }
 

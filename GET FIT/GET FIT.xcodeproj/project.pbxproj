@@ -14,27 +14,6 @@
 		8151C3F919A5B0BA0073DEE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151C3F819A5B0BA0073DEE6 /* CoreData.framework */; };
 		8151C3FC19A5B0FE0073DEE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3FA19A5B0FE0073DEE6 /* Model.xcdatamodeld */; };
 		8151C3FF19A5B2680073DEE6 /* WorkoutMinutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151C3FE19A5B2680073DEE6 /* WorkoutMinutes.m */; };
-		81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F698199C5F8B003D75A0 /* abVup1.png */; };
-		81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F699199C5F8B003D75A0 /* abVup2.png */; };
-		81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */; };
-		81A0F6AF199C5F8B003D75A0 /* armAndLegLift2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */; };
-		81A0F6B0199C5F8B003D75A0 /* bicycle1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69C199C5F8B003D75A0 /* bicycle1.png */; };
-		81A0F6B1199C5F8B003D75A0 /* bicycle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69D199C5F8B003D75A0 /* bicycle2.png */; };
-		81A0F6B2199C5F8B003D75A0 /* crunch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69E199C5F8B003D75A0 /* crunch1.png */; };
-		81A0F6B3199C5F8B003D75A0 /* crunch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F69F199C5F8B003D75A0 /* crunch2.png */; };
-		81A0F6B4199C5F8B003D75A0 /* heelTouch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */; };
-		81A0F6B5199C5F8B003D75A0 /* heelTouch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */; };
-		81A0F6B6199C5F8B003D75A0 /* hop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A2199C5F8B003D75A0 /* hop1.png */; };
-		81A0F6B7199C5F8B003D75A0 /* hop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A3199C5F8B003D75A0 /* hop2.png */; };
-		81A0F6B8199C5F8B003D75A0 /* legRaise1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A4199C5F8B003D75A0 /* legRaise1.png */; };
-		81A0F6B9199C5F8B003D75A0 /* legRaise2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A5199C5F8B003D75A0 /* legRaise2.png */; };
-		81A0F6BA199C5F8B003D75A0 /* pullIn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A6199C5F8B003D75A0 /* pullIn1.png */; };
-		81A0F6BB199C5F8B003D75A0 /* pullIn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A7199C5F8B003D75A0 /* pullIn2.png */; };
-		81A0F6BC199C5F8B003D75A0 /* scissor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A8199C5F8B003D75A0 /* scissor1.png */; };
-		81A0F6BD199C5F8B003D75A0 /* scissor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6A9199C5F8B003D75A0 /* scissor2.png */; };
-		81A0F6BE199C5F8B003D75A0 /* trunk1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6AA199C5F8B003D75A0 /* trunk1.png */; };
-		81A0F6BF199C5F8B003D75A0 /* trunk2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6AB199C5F8B003D75A0 /* trunk2.png */; };
-		81A0F6C1199C65A4003D75A0 /* stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A0F6C0199C65A4003D75A0 /* stopwatch.png */; };
 		81A0F75319A00E88003D75A0 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74B19A00E88003D75A0 /* DateUtil.m */; };
 		81A0F75419A00E88003D75A0 /* DMLazyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74D19A00E88003D75A0 /* DMLazyScrollView.m */; };
 		81A0F75519A00E88003D75A0 /* SACalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0F74F19A00E88003D75A0 /* SACalendar.m */; };
@@ -98,27 +77,6 @@
 		8151C3FB19A5B0FE0073DEE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8151C3FD19A5B2680073DEE6 /* WorkoutMinutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutMinutes.h; sourceTree = "<group>"; };
 		8151C3FE19A5B2680073DEE6 /* WorkoutMinutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutMinutes.m; sourceTree = "<group>"; };
-		81A0F698199C5F8B003D75A0 /* abVup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup1.png; sourceTree = "<group>"; };
-		81A0F699199C5F8B003D75A0 /* abVup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abVup2.png; sourceTree = "<group>"; };
-		81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift1.png; sourceTree = "<group>"; };
-		81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = armAndLegLift2.png; sourceTree = "<group>"; };
-		81A0F69C199C5F8B003D75A0 /* bicycle1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bicycle1.png; sourceTree = "<group>"; };
-		81A0F69D199C5F8B003D75A0 /* bicycle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bicycle2.png; sourceTree = "<group>"; };
-		81A0F69E199C5F8B003D75A0 /* crunch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crunch1.png; sourceTree = "<group>"; };
-		81A0F69F199C5F8B003D75A0 /* crunch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crunch2.png; sourceTree = "<group>"; };
-		81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heelTouch1.png; sourceTree = "<group>"; };
-		81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heelTouch2.png; sourceTree = "<group>"; };
-		81A0F6A2199C5F8B003D75A0 /* hop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hop1.png; sourceTree = "<group>"; };
-		81A0F6A3199C5F8B003D75A0 /* hop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hop2.png; sourceTree = "<group>"; };
-		81A0F6A4199C5F8B003D75A0 /* legRaise1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = legRaise1.png; sourceTree = "<group>"; };
-		81A0F6A5199C5F8B003D75A0 /* legRaise2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = legRaise2.png; sourceTree = "<group>"; };
-		81A0F6A6199C5F8B003D75A0 /* pullIn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullIn1.png; sourceTree = "<group>"; };
-		81A0F6A7199C5F8B003D75A0 /* pullIn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullIn2.png; sourceTree = "<group>"; };
-		81A0F6A8199C5F8B003D75A0 /* scissor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scissor1.png; sourceTree = "<group>"; };
-		81A0F6A9199C5F8B003D75A0 /* scissor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scissor2.png; sourceTree = "<group>"; };
-		81A0F6AA199C5F8B003D75A0 /* trunk1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trunk1.png; sourceTree = "<group>"; };
-		81A0F6AB199C5F8B003D75A0 /* trunk2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trunk2.png; sourceTree = "<group>"; };
-		81A0F6C0199C65A4003D75A0 /* stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopwatch.png; sourceTree = "<group>"; };
 		81A0F74A19A00E88003D75A0 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
 		81A0F74B19A00E88003D75A0 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 		81A0F74C19A00E88003D75A0 /* DMLazyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLazyScrollView.h; sourceTree = "<group>"; };
@@ -353,7 +311,6 @@
 			children = (
 				81CBCEDD1998385E005DC03C /* good times rg.ttf */,
 				81CBCEE7199AFF05005DC03C /* beep-24.mp3 */,
-				81CBCED919980F86005DC03C /* workout Images */,
 				81CBCD561996D263005DC03C /* RESideMenu */,
 				81CBCD301996D1F0005DC03C /* AppDelegate.h */,
 				81CBCD311996D1F0005DC03C /* AppDelegate.m */,
@@ -425,34 +382,6 @@
 				81CBCD671996D64F005DC03C /* LeftMenuViewController.m */,
 			);
 			name = "Menu items";
-			sourceTree = "<group>";
-		};
-		81CBCED919980F86005DC03C /* workout Images */ = {
-			isa = PBXGroup;
-			children = (
-				81A0F6C0199C65A4003D75A0 /* stopwatch.png */,
-				81A0F698199C5F8B003D75A0 /* abVup1.png */,
-				81A0F699199C5F8B003D75A0 /* abVup2.png */,
-				81A0F69A199C5F8B003D75A0 /* armAndLegLift1.png */,
-				81A0F69B199C5F8B003D75A0 /* armAndLegLift2.png */,
-				81A0F69C199C5F8B003D75A0 /* bicycle1.png */,
-				81A0F69D199C5F8B003D75A0 /* bicycle2.png */,
-				81A0F69E199C5F8B003D75A0 /* crunch1.png */,
-				81A0F69F199C5F8B003D75A0 /* crunch2.png */,
-				81A0F6A0199C5F8B003D75A0 /* heelTouch1.png */,
-				81A0F6A1199C5F8B003D75A0 /* heelTouch2.png */,
-				81A0F6A2199C5F8B003D75A0 /* hop1.png */,
-				81A0F6A3199C5F8B003D75A0 /* hop2.png */,
-				81A0F6A4199C5F8B003D75A0 /* legRaise1.png */,
-				81A0F6A5199C5F8B003D75A0 /* legRaise2.png */,
-				81A0F6A6199C5F8B003D75A0 /* pullIn1.png */,
-				81A0F6A7199C5F8B003D75A0 /* pullIn2.png */,
-				81A0F6A8199C5F8B003D75A0 /* scissor1.png */,
-				81A0F6A9199C5F8B003D75A0 /* scissor2.png */,
-				81A0F6AA199C5F8B003D75A0 /* trunk1.png */,
-				81A0F6AB199C5F8B003D75A0 /* trunk2.png */,
-			);
-			name = "workout Images";
 			sourceTree = "<group>";
 		};
 		81CBCEDF19983AC8005DC03C /* Targeted Workout */ = {
@@ -559,32 +488,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81A0F6AE199C5F8B003D75A0 /* armAndLegLift1.png in Resources */,
-				81A0F6AC199C5F8B003D75A0 /* abVup1.png in Resources */,
-				81A0F6BB199C5F8B003D75A0 /* pullIn2.png in Resources */,
-				81A0F6B2199C5F8B003D75A0 /* crunch1.png in Resources */,
-				81A0F6BA199C5F8B003D75A0 /* pullIn1.png in Resources */,
-				81A0F6B6199C5F8B003D75A0 /* hop1.png in Resources */,
 				81CBCEE8199AFF05005DC03C /* beep-24.mp3 in Resources */,
-				81A0F6C1199C65A4003D75A0 /* stopwatch.png in Resources */,
-				81A0F6B8199C5F8B003D75A0 /* legRaise1.png in Resources */,
-				81A0F6B0199C5F8B003D75A0 /* bicycle1.png in Resources */,
-				81A0F6B5199C5F8B003D75A0 /* heelTouch2.png in Resources */,
-				81A0F6BF199C5F8B003D75A0 /* trunk2.png in Resources */,
-				81A0F6BC199C5F8B003D75A0 /* scissor1.png in Resources */,
 				81CBCEDE1998385E005DC03C /* good times rg.ttf in Resources */,
-				81A0F6B1199C5F8B003D75A0 /* bicycle2.png in Resources */,
-				81A0F6B9199C5F8B003D75A0 /* legRaise2.png in Resources */,
-				81A0F6B3199C5F8B003D75A0 /* crunch2.png in Resources */,
 				81CBCD3A1996D1F0005DC03C /* Images.xcassets in Resources */,
 				81CBCD2C1996D1F0005DC03C /* InfoPlist.strings in Resources */,
-				81A0F6AD199C5F8B003D75A0 /* abVup2.png in Resources */,
-				81A0F6BE199C5F8B003D75A0 /* trunk1.png in Resources */,
-				81A0F6B4199C5F8B003D75A0 /* heelTouch1.png in Resources */,
-				81A0F6AF199C5F8B003D75A0 /* armAndLegLift2.png in Resources */,
-				81A0F6BD199C5F8B003D75A0 /* scissor2.png in Resources */,
 				81CBCD351996D1F0005DC03C /* Main.storyboard in Resources */,
-				81A0F6B7199C5F8B003D75A0 /* hop2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

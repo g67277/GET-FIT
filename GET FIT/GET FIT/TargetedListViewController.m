@@ -36,6 +36,8 @@
     
     workoutFeed = [[WorkoutFeed alloc] init];
     currentCell = [[WorkoutInfo alloc] init];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
     
     
     

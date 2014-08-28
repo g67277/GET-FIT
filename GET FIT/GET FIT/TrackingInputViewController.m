@@ -16,6 +16,11 @@
 @implementation TrackingInputViewController
 @synthesize weightField, sizeField;
 
+- (void) viewDidLayoutSubviews{
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

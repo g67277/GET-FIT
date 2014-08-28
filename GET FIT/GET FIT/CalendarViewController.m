@@ -21,7 +21,8 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1.0f];
+    headerBackground.backgroundColor = [UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1.0f];
+    self.view.backgroundColor = [UIColor whiteColor];
 	
     /*
      * Smooth scrolling in vertical direction
@@ -37,10 +38,12 @@
     
     
     calendar.delegate = self;
+    headerLabel.text = @"Calendar";
+    headerLabel.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:25];
     
     [self.view addSubview:calendar];
     
-    [self.view bringSubviewToFront:panelButton];
+    [self.view bringSubviewToFront:headerBackground];
     
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -112,29 +115,25 @@
 
     }
 
-    NSLog(@"%f", compinedMinutesForDate);
-    NSLog(@"%@", measurements);
     
-    NSString* minOfWorkout = [NSString stringWithFormat:@"%2f", compinedMinutesForDate];
+    NSString* minOfWorkout = [NSString stringWithFormat:@"%.2f Mins", compinedMinutesForDate];
     
-    if (!alert || !alert.isDisplayed) {
-        // Custom colored alert of type AlertInfo, custom colors can be applied to any alert type
-        alert = [[AMSmoothAlertView alloc]initDropAlertWithTitle:minOfWorkout andText:measurements andCancelButton:NO forAlertType:AlertInfo andColor:[UIColor colorWithRed:250/255.0f green:186/255.0f blue:45/255.0f alpha:1.0f]];
-        [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:25.0f]];
+    if (compinedMinutesForDate > 0) {
+        if (!alert || !alert.isDisplayed) {
+            // Custom colored alert of type AlertInfo, custom colors can be applied to any alert type
+            alert = [[AMSmoothAlertView alloc]initDropAlertWithTitle:minOfWorkout andText:measurements andCancelButton:NO forAlertType:AlertInfo andColor:[UIColor colorWithRed:250/255.0f green:186/255.0f blue:45/255.0f alpha:1.0f]];
+            [alert setTitleFont:[UIFont fontWithName:@"Verdana" size:25.0f]];
+            
+            alert.cornerRadius = 3.0f;
+            [alert show];
+        }else{
+            [alert dismissAlertView];
+        }
         
-        alert.cornerRadius = 3.0f;
         [alert show];
-    }else{
-        [alert dismissAlertView];
     }
+    
 
-    
-    
-    
-    
-    [alert show];
-
-    NSLog(@"Date Selected : %02i/%02i/%04i",day,month,year);
 }
 
 #pragma mark - Delegates

@@ -36,16 +36,42 @@
     
 	// Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES];
+    headerTitle.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:25];
+
 
 }
 
 - (IBAction)onClick:(UIButton*)sender{
-
+    
+    
     if (sender.tag == 0) {
-        imgPicker = [[UIImagePickerController alloc] init];
-        imgPicker.delegate = self;
-        imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:imgPicker animated:YES completion:nil];
+        //------------------------------------Pulling Date (for core data tracking)-----------------------------------
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSDayCalendarUnit) fromDate:date];
+        NSInteger day = [components day];
+        NSString* todayDate = [NSString stringWithFormat:@"%ld", (long)day];
+        int todayDateInt = [todayDate intValue];
+        //------------------------------------------------------------------------------------------------------------
+        NSString* compareDate = [incomingDate substringToIndex:[incomingDate length] -9];
+        int compareDateInt = [compareDate intValue];
+        
+        if (todayDateInt == compareDateInt + 7 || compareDate == nil) {
+            imgPicker = [[UIImagePickerController alloc] init];
+            imgPicker.delegate = self;
+            imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:imgPicker animated:YES completion:nil];
+        }else{
+            if (!alert || !alert.isDisplayed) {
+                alert = [[AMSmoothAlertView alloc]initFadeAlertWithTitle:@"Sorry!" andText:@"Only 1 picture every week" andCancelButton:NO forAlertType:AlertFailure];
+                [alert.defaultButton setTitle:@"Ok" forState:UIControlStateNormal];
+                
+                [alert show];
+            }else{
+                [alert dismissAlertView];
+            }
+        }
+        
     }else if (sender.tag == 1){
         if (camPicArray.count < 5) {
             if (!alert || !alert.isDisplayed) {
@@ -181,10 +207,9 @@
     }else{
         for (int i = 0; i < [objects count]; i++) {
             matches = objects[i];
-            //[testing2 addObject:matches];
             PicEntity* nameImg = matches;
             NSString* incomingImg = nameImg.image;
-            NSString* incomingDate = nameImg.date;
+            incomingDate = nameImg.date;
             NSString* measurements = @"No details available for this picture!";
             NSUInteger test = [objects2 count];
             if (test > i) {

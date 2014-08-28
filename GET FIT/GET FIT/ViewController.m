@@ -27,8 +27,12 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f
                                                                              green:139/255.0f
-                                                                              blue:234/255.0f
+                                                                             blue:234/255.0f
                                                                              alpha:1.0f]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
+
 }
 
 - (void)viewDidLoad
@@ -36,9 +40,8 @@
     [super viewDidLoad];
     
     workoutFeed = [[WorkoutFeed alloc] init];
-    allWorkouts = [workoutFeed workoutArray];
+    allWorkouts = [workoutFeed workoutArray:NO];
     targetedWorkoutArray = [[NSMutableArray alloc] init];
-    
     
     
     

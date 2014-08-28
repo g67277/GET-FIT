@@ -14,9 +14,12 @@
     WorkoutInfo* workoutInfo;
     
     NSMutableArray* workoutArray;
+    NSMutableArray* randomWorkoutArray;
+    
+    NSMutableArray* chosen_numbers;
     
 }
 
-- (NSMutableArray*) workoutArray;
+- (NSMutableArray*) workoutArray: (BOOL) isTargeted;
 
 @end

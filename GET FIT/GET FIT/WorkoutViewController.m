@@ -27,9 +27,29 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    NSString* title = @"GET FIT";
+    self.navigationItem.title = title;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"GoodTimesRg-Regular" size:35]}];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    setLabel.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:15];
+    countDownLabel.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:35];
+    countDownLabel.textColor = [UIColor colorWithRed:73/255.0f
+                                               green:139/255.0f
+                                                blue:234/255.0f
+                                               alpha:1.0f];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view bringSubviewToFront:setLabel];
+
+
+    
     //record num of workout minutes
     numOfWorkoutSeconds = 0;
     workoutFeed = [[WorkoutFeed alloc] init];
@@ -48,7 +68,7 @@
     }
     
     if (targetedArrayWorkout == nil) {
-        incomingWorkoutList = [workoutFeed workoutArray];
+        incomingWorkoutList = [workoutFeed workoutArray:YES];
     }else if (incomingWorkoutList == nil){
         incomingWorkoutList = targetedArrayWorkout;
     }
@@ -229,7 +249,7 @@
         //changing the button image for play/pause
         if (setNum <= 10) {
             [UIView animateWithDuration:0.5 animations:^{
-                pause.alpha = 0.1;
+                pause.alpha = 0.15;
                 [pause setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
             }];
             [self setTimer];

@@ -15,6 +15,7 @@
     
     IBOutlet UITableView* motiTable;
     IBOutlet UIButton* camButton;
+    IBOutlet UILabel* headerTitle;
     
     IBOutlet UIView* mergEffectView;
     IBOutlet UIImageView* mergeAnimation;
@@ -28,6 +29,8 @@
     NSMutableArray* weightArray;
     NSMutableArray* sizeArray;
     NSMutableArray* detailsArray;
+    
+    NSString* incomingDate;
     
     AMSmoothAlertView * alert;
     bool isPopupShown;

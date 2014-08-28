@@ -15,6 +15,8 @@
     IBOutlet UISegmentedControl* chartType;
     
     IBOutlet UISegmentedControl* monthFormat;
+    IBOutlet UIView* headerBackground;
+    IBOutlet UILabel* headerLabel;
     
     UIImage *capturedScreen;
     

@@ -28,7 +28,7 @@
 #import <FrameAccessor/FrameAccessor.h>
 #import <MKFoundationKit/NSArray+MK.h>
 
-static CGFloat kDefaultLabelWidth = 40.0;
+static CGFloat kDefaultLabelWidth = 35.0;
 static CGFloat kDefaultLabelHeight = 12.0;
 static NSInteger kDefaultValueLabelCount = 5;
 
@@ -102,7 +102,7 @@ static CGFloat kAxisMargin = 50.0;
         CGRect frame = CGRectMake(0, 0, kDefaultLabelWidth, kDefaultLabelHeight);
         UILabel *item = [[UILabel alloc] initWithFrame:frame];
         item.textAlignment = NSTextAlignmentCenter;
-        item.font = [UIFont boldSystemFontOfSize:12];
+        item.font = [UIFont boldSystemFontOfSize:11];
         item.textColor = [UIColor lightGrayColor];
         item.text = [self.dataSource titleForLineAtIndex:idx];
         

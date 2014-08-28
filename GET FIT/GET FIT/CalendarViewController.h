@@ -14,6 +14,8 @@
 @interface CalendarViewController : UIViewController<AMSmoothAlertViewDelegate>{
     
     IBOutlet UIButton* panelButton;
+    IBOutlet UIView* headerBackground;
+    IBOutlet UILabel* headerLabel;
     AMSmoothAlertView * alert;
     bool isPopupShown;
     

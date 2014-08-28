@@ -22,6 +22,8 @@
 - (void) refreshCellWithInfo: (NSString*) workoutTitle{
 
     workTitle.text = workoutTitle;
+    workTitle.textColor = [UIColor darkGrayColor];
+    workTitle.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:15];
     
 }
 

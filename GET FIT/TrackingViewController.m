@@ -25,17 +25,29 @@
     UILongPressGestureRecognizer *longPress;
 }
 
+- (void) viewDidLayoutSubviews{
+    
+    CGRect frame= monthFormat.frame;
+    [monthFormat setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 60)];
+    CGRect frame2= chartType.frame;
+    [chartType setFrame:CGRectMake(frame2.origin.x, frame2.origin.y, frame2.size.width, 60)];
+    
+}
+
 
 - (void) viewWillAppear:(BOOL)animated{
     [self retriveCoreData];
     // THis is to change the chart input
 
     if (isData) {
+        chartType.enabled = YES;
         if (chartTypeSelected == 0) {
             [self _setupWeightGraph];
         }else{
             [self _setupWeistSizeGraph];
         }
+    }else{
+        chartType.enabled = NO;
     }
     
 
@@ -45,11 +57,33 @@
 
     [super viewDidLoad];
     //[self retriveCoreData];
+    
+    headerBackground.backgroundColor = [UIColor colorWithRed:73/255.0f
+                                                       green:139/255.0f
+                                                        blue:234/255.0f
+                                                       alpha:1.0f];
+    headerLabel.text = @"Tracking";
+    headerLabel.font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:25];
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:73/255.0f
+                                                                  green:139/255.0f
+                                                                   blue:234/255.0f
+                                                                  alpha:1.0f]];
+    
+
+    UIFont *font = [UIFont fontWithName:@"GoodTimesRg-Regular" size:20];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    [monthFormat setTitleTextAttributes:attributes
+                               forState:UIControlStateNormal];
+    [chartType setTitleTextAttributes:attributes
+                             forState:UIControlStateNormal];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1]];
-    self.view.backgroundColor = [UIColor gk_cloudsColor];
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:73/255.0f green:139/255.0f blue:234/255.0f alpha:1]];
+    [self.navigationController setNavigationBarHidden:YES];
+
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //------------------------------------------------------------------
     
@@ -143,10 +177,14 @@
             [self.graph reset];
             [self _setupWeightGraph];
             chartTypeSelected = 0;
+            [self viewDidLayoutSubviews];
+
         }else {
             [self.graph reset];
             [self _setupWeistSizeGraph];
             chartTypeSelected = 1;
+            [self viewDidLayoutSubviews];
+
         }
 
     }
@@ -172,18 +210,21 @@
             chartFormat = 0;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
+            [self viewDidLayoutSubviews];
             break;
         case 1:
             self.labels = @[@"1-8", @"9-16", @"17-24", @"25-31", @"32-42", @"43-51", @"52-60"];
             chartFormat = 1;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
+            [self viewDidLayoutSubviews];
             break;
         case 2:
             self.labels = @[@"1-10", @"11-20", @"21-31", @"32-46", @"47-60", @"61-75", @"76-90"];
             chartFormat = 2;
             [self viewWillDisappear:NO];
             [self viewWillAppear:NO];
+            [self viewDidLayoutSubviews];
             break;
         default:
             break;
@@ -338,7 +379,7 @@
 }
 
 - (UIColor *)colorForLineAtIndex:(NSInteger)index {
-    id colors = @[[UIColor gk_turquoiseColor],
+    id colors = @[[UIColor gk_alizarinColor],
                   [UIColor gk_peterRiverColor],
                   [UIColor gk_alizarinColor],
                   [UIColor gk_sunflowerColor]
@@ -351,7 +392,7 @@
 }
 
 - (CFTimeInterval)animationDurationForLineAtIndex:(NSInteger)index {
-    return [[@[@3, @1.6, @2.2, @1.4] objectAtIndex:index] doubleValue];
+    return [[@[@1.2, @1.6, @2.2, @1.4] objectAtIndex:index] doubleValue];
 }
 
 - (NSString *)titleForLineAtIndex:(NSInteger)index {

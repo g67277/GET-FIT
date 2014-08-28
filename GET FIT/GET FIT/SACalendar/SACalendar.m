@@ -7,10 +7,12 @@
 //
 //  Distributed under MIT License
 
+#import "AppDelegate.h"
 #import "SACalendar.h"
 #import "SACalendarCell.h"
 #import "DMLazyScrollView.h"
 #import "DateUtil.h"
+
 
 @interface SACalendar () <UICollectionViewDataSource, UICollectionViewDelegate>{
     DMLazyScrollView* scrollView;
@@ -217,7 +219,7 @@
         float pointsPerPixel = 12.0 / size.height;
         float desiredFontSize = headerSize * pointsPerPixel;
         
-        UILabel *monthLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, headerSize)];
+        UILabel *monthLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, self.frame.size.width, headerSize)];
         monthLabel.font = [UIFont systemFontOfSize: desiredFontSize * headerFontRatio];
         monthLabel.textAlignment = NSTextAlignmentCenter;
         monthLabel.text = [NSString stringWithFormat:@"%@ %04i",[DateUtil getMonthString:month],year];
@@ -314,6 +316,7 @@
 {
     SACalendarCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
+
     int monthToLoad = [self monthToLoad:(int)collectionView.tag];
     int yearToLoad = [self yearToLoad:(int)collectionView.tag];
     
@@ -339,6 +342,7 @@
         UIFont *font = cellFont;
         UIFont *boldFont = cellBoldFont;
         
+        
         // if the cell is the current date, display the red circle
         BOOL isToday = NO;
         if (indexPath.row - firstDay + 1 == current_date
@@ -358,16 +362,15 @@
             cell.dateLabel.textColor = dateTextColor;
         }
         
+        
+        
         // if the cell is selected, display the black circle
         if (indexPath.row == selectedRow) {
             cell.selectedView.hidden = NO;
             cell.dateLabel.textColor = selectedDateTextColor;
             cell.dateLabel.font = boldFont;
             
-            /*NSString* testing = [NSString stringWithFormat:@"%i", (int)indexPath.row - firstDay + 1];
-            // this works for displaying data
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:testing message:nil delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alert show];*/
+            
         }
         else{
             cell.selectedView.hidden = YES;
@@ -375,6 +378,54 @@
                 cell.dateLabel.font = font;
                 cell.dateLabel.textColor = dateTextColor;
             }
+        }
+        
+        if (current_month == monthToLoad) {
+            // Core data check -------------------------------------------------------------------------------
+            AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            NSManagedObjectContext *context = [appDelegate managedObjectContext];
+            // We want the contact entity, (this is where you can select the entity if there are more than one)
+            NSEntityDescription* entityDesc = [NSEntityDescription entityForName:@"WorkoutMinutes" inManagedObjectContext:context];
+            // initialzing a fetch request
+            NSFetchRequest *request = [[NSFetchRequest alloc] init];
+            // passing in the entity
+            [request setEntity:entityDesc];
+            [request setPropertiesToFetch:@[@"workoutDate"]];
+            NSManagedObject* matches = nil;
+            
+            NSError *error;
+            NSArray *objects = [context executeFetchRequest:request
+                                                      error:&error];
+            
+            if ([objects count] == 0) {
+                NSLog(@"No matches");
+            }else{
+                for (int i = 0; i < [objects count]; i++) {
+                    
+                    matches = objects[i];
+                    
+                    NSString *dateDayCompareString = [[matches valueForKey:@"workoutDate"] substringToIndex:[[matches valueForKey:@"workoutDate"] length]-9];
+                    NSString *monthNday = [[matches valueForKey:@"workoutDate"] substringToIndex:[[matches valueForKey:@"workoutDate"] length]-6];
+                    NSString *dateMonthCompareString = [monthNday substringFromIndex:4];
+                    
+                    int dateCompareInt = [dateDayCompareString intValue];
+                    
+                    int monthCompareInt = [dateMonthCompareString intValue];
+                    
+                    if (indexPath.row - firstDay + 1 == dateCompareInt && monthToLoad == monthCompareInt) {
+                        cell.circleView.hidden = NO;
+                        cell.circleView.backgroundColor = [UIColor orangeColor];
+                        //cell.dateLabel.textColor = currentDateTextColor;
+                        
+                        cell.dateLabel.textColor = [UIColor whiteColor];
+                    }else{
+                        break;
+                    }
+                    
+                    
+                }
+            }
+            //---------------------------------------------------------------------------------------------------
         }
         
         // set the appropriate date for the cell
